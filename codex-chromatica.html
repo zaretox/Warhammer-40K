@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c0c0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Chromatica">
+<title>Codex Chromatica — Schémas de peinture Warhammer 40 000</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0f;--ink2:#121317;--panel:#16181d;--panel2:#1c1f25;
+    --line:#2a2d34;--line2:#3a3e47;
+    --bone:#d9d2bf;--bone-dim:#a39c8a;--mute:#7b7668;
+    --gold:#c6a14e;--gold-dim:#8c7536;
+    --imp:#c6a14e;--cha:#b23b2e;--xen:#3f9b8e;
+    --rad:10px;
+    --safe-t:env(safe-area-inset-top);
+    --safe-b:env(safe-area-inset-bottom);
+    --appbar:52px;
+    --nav:62px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:#070708;color:var(--bone);
+    font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--gold);color:#15130c}
+
+  .shell{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative;
+    background:var(--ink);
+    background-image:radial-gradient(130% 70% at 50% -10%, #1a1b20 0%, var(--ink) 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+    box-shadow:0 0 60px rgba(0,0,0,.6)}
+
+  .appbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:calc(var(--safe-t) + 9px) 14px 9px;background:rgba(11,11,14,.93);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);min-height:calc(var(--appbar) + var(--safe-t))}
+  .appbar .brandmark{display:flex;align-items:center;gap:8px;min-width:0}
+  .appbar .sig{width:20px;height:20px;flex:none;border:1.5px solid var(--gold);border-radius:50%;
+    display:grid;place-items:center;color:var(--gold);font-family:'Space Mono';font-size:10px;font-weight:700}
+  .appbar b{font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;font-size:13px;font-weight:600;color:var(--bone);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .appbar b em{color:var(--gold);font-style:normal}
+  .bt{display:flex;flex:none;border:1px solid var(--line2);border-radius:20px;overflow:hidden}
+  .bt button{background:none;border:none;color:var(--bone-dim);cursor:pointer;
+    font-family:'Oswald';text-transform:uppercase;letter-spacing:.04em;font-size:10.5px;padding:7px 10px;transition:.15s}
+  .bt button.on{background:var(--gold);color:#1c1709}
+
+  .view{display:none}
+  .view.on{display:block;animation:fade .22s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .pad-bottom{padding-bottom:calc(var(--nav) + var(--safe-b) + 26px)}
+
+  /* ---- Accueil ---- */
+  .hero{position:relative;padding:38px 18px 30px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(135deg, rgba(198,161,78,.05) 0 2px, transparent 2px 9px);pointer-events:none}
+  .hero .eyebrow{font-family:'Space Mono';font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  .hero h1{font-family:'Oswald';font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:0;
+    line-height:.94;font-size:clamp(34px,12vw,52px);color:var(--bone)}
+  .hero h1 .em{color:var(--gold)}
+  .hero .lede{margin:14px 0 0;color:var(--bone-dim);font-size:14.5px}
+  .hero .lede b{color:var(--bone);font-weight:600}
+  .stats{display:flex;margin:24px 0 0;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden}
+  .stat{flex:1;padding:13px 10px;border-right:1px solid var(--line);text-align:center}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:'Oswald';font-size:30px;font-weight:600;color:var(--gold);line-height:1}
+  .stat .l{font-family:'Space Mono';font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:5px}
+  .home-wrap{padding:26px 18px 0}
+  .home-h{font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--mute);
+    margin:0 0 14px;display:flex;align-items:center;gap:10px}
+  .home-h::after{content:"";flex:1;height:1px;background:var(--line)}
+  .entries{display:flex;flex-direction:column;gap:11px;margin-bottom:34px}
+  .entry{text-align:left;cursor:pointer;background:linear-gradient(180deg,var(--panel),var(--ink2));
+    border:1px solid var(--line);border-radius:var(--rad);padding:16px 16px;transition:.12s;color:inherit;font:inherit;
+    display:flex;align-items:center;gap:14px}
+  .entry:active{transform:scale(.99);border-color:var(--line2)}
+  .entry .mk{width:5px;align-self:stretch;border-radius:3px;flex:none}
+  .entry[data-al="imperium"] .mk{background:var(--imp)}
+  .entry[data-al="chaos"] .mk{background:var(--cha)}
+  .entry[data-al="xenos"] .mk{background:var(--xen)}
+  .entry .body{flex:1;min-width:0}
+  .entry h3{font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-size:18px;margin:0 0 4px;color:var(--bone)}
+  .entry p{margin:0;font-size:12.5px;color:var(--bone-dim)}
+  .entry .chev{color:var(--gold);font-size:22px;flex:none}
+  .legend{display:flex;flex-direction:column;gap:9px;margin-bottom:34px}
+  .leg{font-size:13px;color:var(--bone-dim)}
+  .leg b{font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-size:12px;color:var(--bone);margin-right:5px}
+  .about{border:1px dashed var(--line2);border-radius:var(--rad);padding:15px 16px;background:var(--ink2)}
+  .about p{margin:0 0 9px;font-size:12.5px;color:var(--bone-dim)}
+  .about p:last-child{margin-bottom:0}
+  .about b{color:var(--bone)}
+
+  /* ---- Schémas ---- */
+  .schemebar{position:sticky;top:calc(var(--appbar) + var(--safe-t));z-index:40;background:rgba(12,12,15,.95);
+    backdrop-filter:blur(7px);border-bottom:1px solid var(--line);padding:11px 14px 10px;display:flex;flex-direction:column;gap:10px}
+  .search{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line2);border-radius:var(--rad);padding:10px 13px}
+  .search input{flex:1;background:none;border:none;color:var(--bone);font-family:'Inter';font-size:16px;outline:none;min-width:0}
+  .search svg{flex:none;opacity:.6}
+  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -14px;padding:0 14px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;font-family:'Oswald';text-transform:uppercase;letter-spacing:.08em;font-size:12.5px;font-weight:500;cursor:pointer;
+    background:var(--panel);border:1px solid var(--line2);color:var(--bone-dim);padding:8px 15px;border-radius:20px;transition:.12s}
+  .chip:active{transform:scale(.97)}
+  .chip.on{background:var(--bone);color:#15130c;border-color:var(--bone)}
+  .chip[data-al="imperium"].on{background:var(--imp);border-color:var(--imp);color:#1c1709}
+  .chip[data-al="chaos"].on{background:var(--cha);border-color:var(--cha);color:#1c0d0b}
+  .chip[data-al="xenos"].on{background:var(--xen);border-color:var(--xen);color:#08201d}
+  main{padding:16px 14px 0}
+  .count{font-family:'Space Mono';font-size:10.5px;color:var(--mute);letter-spacing:.13em;text-transform:uppercase;margin:0 0 14px}
+
+  .faction{margin:0 0 26px;scroll-margin-top:calc(var(--appbar) + var(--safe-t) + 96px)}
+  .faction-head{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:13px;flex-wrap:wrap}
+  .faction-head .mk{width:8px;height:20px;flex:none;border-radius:1px}
+  .faction[data-al="imperium"] .mk{background:var(--imp)}
+  .faction[data-al="chaos"] .mk{background:var(--cha)}
+  .faction[data-al="xenos"] .mk{background:var(--xen)}
+  .faction-head h2{font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:19px;margin:0;color:var(--bone);flex:1;min-width:0}
+  .faction-head .al{font-family:'Space Mono';font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);width:100%}
+  .faction-blurb{color:var(--bone-dim);font-size:12.5px;margin:-6px 0 14px}
+  .grid{display:flex;flex-direction:column;gap:12px}
+
+  .card{background:linear-gradient(180deg,var(--panel) 0%,var(--ink2) 100%);border:1px solid var(--line);
+    border-radius:var(--rad);padding:15px 15px 13px}
+  .card h4{font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:17px;margin:0 0 10px;color:var(--bone);
+    display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .addbtn{font-family:'Space Mono';font-size:11px;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;
+    border:1px solid var(--gold-dim);color:var(--gold);background:none;border-radius:20px;padding:7px 13px;transition:.12s;white-space:nowrap}
+  .addbtn:active{transform:scale(.96)}
+  .addbtn.in{background:var(--gold-dim);color:#1c1709;border-color:var(--gold-dim)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 13px}
+  .tag{font-family:'Space Mono';font-size:10px;letter-spacing:.05em;border:1px solid var(--line2);border-radius:20px;
+    padding:3px 10px;color:var(--bone-dim);display:inline-flex;align-items:center;gap:6px}
+  .tag .dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+  .strip{display:flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden;margin:0 0 12px}
+  .swatch{flex:1;min-width:0;position:relative;height:50px;display:flex;align-items:flex-end;border-right:1px solid rgba(0,0,0,.35)}
+  .swatch:last-child{border-right:none}
+  .swatch span{font-family:'Space Mono';font-size:8px;letter-spacing:.03em;background:rgba(8,8,10,.66);color:#efe9d8;
+    padding:1px 4px;border-top-right-radius:3px;text-transform:uppercase;line-height:1.2}
+  table.recipe{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.recipe td{padding:7px 0;vertical-align:top;border-top:1px solid var(--line)}
+  table.recipe tr:first-child td{border-top:none}
+  .r-role{font-family:'Space Mono';font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);white-space:nowrap;padding-right:10px!important;width:1%}
+  .r-chip{padding-right:9px!important;width:1%}
+  .r-chip i{display:block;width:16px;height:16px;border-radius:4px;border:1px solid rgba(255,255,255,.22);margin-top:1px}
+  .r-paint{color:var(--bone);font-weight:500}
+  .r-type{font-family:'Space Mono';font-size:9.5px;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.04em}
+  .r-alt{color:var(--bone-dim);font-size:12px}
+  .r-zone{display:block;font-size:12.5px;color:#d8c79a;margin-top:3px}
+  .r-zone b{color:var(--gold);font-weight:700}
+  .brand-ap .r-paint--cit{display:none}.brand-ap .r-paint--ap{display:inline}
+  .brand-cit .r-paint--cit{display:inline}.brand-cit .r-paint--ap{display:none}
+  .note{margin:11px 0 0;font-size:12.5px;color:var(--bone-dim);border-left:2px solid var(--gold-dim);padding:5px 0 5px 11px;background:rgba(198,161,78,.04)}
+  .note b{color:var(--gold);font-weight:600}
+  .empty{padding:50px 10px;text-align:center;color:var(--mute);font-family:'Space Mono';letter-spacing:.08em;font-size:13px}
+
+  /* ---- Liste ---- */
+  .list-wrap{padding:22px 16px 0}
+  .printhead{display:none}
+  .list-head{border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:16px}
+  .list-head h2{font-family:'Oswald';text-transform:uppercase;letter-spacing:.04em;font-size:24px;margin:0;color:var(--bone)}
+  .list-head p{margin:6px 0 0;color:var(--bone-dim);font-size:13px}
+  .list-actions{display:flex;gap:8px;margin:14px 0 4px}
+  .act{flex:1;font-family:'Oswald';text-transform:uppercase;letter-spacing:.06em;font-size:13px;cursor:pointer;text-align:center;
+    border:1px solid var(--line2);color:var(--bone);background:var(--panel);border-radius:var(--rad);padding:12px 10px;transition:.12s}
+  .act:active{transform:scale(.98)}
+  .act.gold{border-color:var(--gold);color:var(--gold)}
+  .selected-schemes{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 22px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line2);
+    border-radius:20px;padding:6px 7px 6px 12px;font-size:12.5px;color:var(--bone)}
+  .pill .al{width:8px;height:8px;border-radius:50%;flex:none}
+  .pill .x{cursor:pointer;width:22px;height:22px;border-radius:50%;background:var(--line2);color:var(--bone);
+    display:grid;place-items:center;font-size:14px;line-height:1;border:none;font-family:inherit}
+  .pill .x:active{background:var(--cha);color:#fff}
+  .ptype{margin:0 0 18px}
+  .ptype h3{font-family:'Space Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+    margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  .ptype h3 .c{color:var(--mute);font-size:9px}
+  .ptype h3::after{content:"";flex:1;height:1px;background:var(--line)}
+  .shop-row{display:flex;align-items:center;gap:13px;padding:11px 2px;border-bottom:1px solid var(--line)}
+  .shop-row .cb{flex:none;display:flex}
+  .shop-row .cb input{width:22px;height:22px;accent-color:var(--gold);cursor:pointer}
+  .shop-row .sw{width:24px;height:24px;border-radius:5px;flex:none;border:1px solid rgba(255,255,255,.22)}
+  .shop-row .nm{flex:1;min-width:0}
+  .shop-row .nm .cit{display:block;color:var(--bone);font-weight:500;font-size:14.5px}
+  .shop-row .nm .ap{display:block;color:var(--bone-dim);font-size:12px}
+  .shop-row .ct{font-family:'Space Mono';font-size:11px;color:var(--mute);flex:none}
+  .shop-row.done .cit,.shop-row.done .ap{text-decoration:line-through;opacity:.42}
+  .list-empty{text-align:center;padding:54px 16px;color:var(--bone-dim)}
+  .list-empty .big{font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-size:20px;color:var(--bone);margin-bottom:10px}
+  .list-empty .act{flex:none;margin-top:18px;display:inline-block;padding:12px 22px}
+
+  footer{padding:22px 16px 0;color:var(--mute);font-size:11px;font-family:'Space Mono';letter-spacing:.03em}
+
+  /* ---- Bottom nav ---- */
+  .bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:60;
+    display:flex;background:rgba(13,13,16,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+    padding-bottom:var(--safe-b)}
+  .navitem{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 7px;
+    background:none;border:none;cursor:pointer;color:var(--bone-dim);transition:.12s;position:relative;min-height:var(--nav)}
+  .navitem svg{width:23px;height:23px}
+  .navitem span{font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-size:10px}
+  .navitem.on{color:var(--gold)}
+  .navitem.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:30px;height:2px;background:var(--gold);border-radius:2px}
+  .navitem .nbadge{position:absolute;top:5px;right:50%;margin-right:-22px;background:var(--gold);color:#1c1709;
+    font-family:'Space Mono';font-size:9px;font-weight:700;border-radius:9px;min-width:16px;height:16px;
+    display:grid;place-items:center;padding:0 4px}
+  .navitem .nbadge.empty{display:none}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  @media print{
+    body,.shell{background:#fff;color:#000}
+    .appbar,.schemebar,.bottomnav,.hero,.home-wrap,footer,.list-actions{display:none!important}
+    .view{display:none!important}
+    #view-list.on{display:block!important}
+    .shell{max-width:none;box-shadow:none}
+    .list-wrap{padding:0}
+    .printhead{display:block;margin-bottom:14px}
+    .printhead h1{font-family:'Oswald';font-size:20pt;margin:0 0 4px}
+    .printhead p{margin:0;color:#444;font-size:10pt}
+    .list-head h2,.ptype h3{color:#000}
+    .pill{border-color:#999;color:#000;background:#fff}
+    .pill .x{display:none}
+    .ptype h3::after{background:#ccc}
+    .shop-row{border-color:#ccc}
+    .shop-row .nm .cit,.shop-row .nm .ap,.shop-row .ct{color:#000}
+    .shop-row .sw{border-color:#999;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body class="brand-cit">
+<div class="shell">
+
+  <div class="appbar">
+    <div class="brandmark"><span class="sig">CC</span><b>Codex&nbsp;<em>Chromatica</em></b></div>
+    <div class="bt" id="brand">
+      <button class="on" data-b="cit">Citadel</button><button data-b="ap">Army P.</button>
+    </div>
+  </div>
+
+  <section class="view on" id="view-home">
+    <div class="hero">
+      <p class="eyebrow">// Atelier de peinture</p>
+      <h1>Codex <span class="em">Chromatica</span></h1>
+      <p class="lede">Les schémas de peinture des armées de <b>Warhammer 40 000</b> : séquence complète étape par étape, en <b>Citadel</b> et <b>Army Painter</b>. Compose ta liste de courses et imprime-la.</p>
+      <div class="stats">
+        <div class="stat"><div class="n" id="stFac">—</div><div class="l">Factions</div></div>
+        <div class="stat"><div class="n" id="stSch">—</div><div class="l">Schémas</div></div>
+        <div class="stat"><div class="n" id="stPai">—</div><div class="l">Peintures</div></div>
+      </div>
+    </div>
+    <div class="home-wrap pad-bottom">
+      <p class="home-h">Explorer par alliance</p>
+      <div class="entries" id="entries">
+        <button class="entry" data-al="imperium"><span class="mk"></span><span class="body"><h3>Imperium</h3><p>Space Marines &amp; chapitres, Garde, Custodes, Mechanicus, Sœurs, Chevaliers.</p></span><span class="chev">›</span></button>
+        <button class="entry" data-al="chaos"><span class="mk"></span><span class="body"><h3>Chaos</h3><p>Légions traîtresses, Death Guard, Thousand Sons, World Eaters, Démons.</p></span><span class="chev">›</span></button>
+        <button class="entry" data-al="xenos"><span class="mk"></span><span class="body"><h3>Xenos</h3><p>Necrons, Orks, Aeldari, Drukhari, T'au, Tyranides, GSC, Votann, Arlequins.</p></span><span class="chev">›</span></button>
+      </div>
+      <p class="home-h">Lire une recette</p>
+      <div class="legend">
+        <div class="leg"><b>Sous-couche</b> Bombe / primer qui prépare la surface.</div>
+        <div class="leg"><b>Base</b> Couche couvrante : la couleur de fond.</div>
+        <div class="leg"><b>Lavis</b> Shade — coule dans les creux, crée les ombres.</div>
+        <div class="leg"><b>Couche</b> Layer — remonte la couleur sur les volumes.</div>
+        <div class="leg"><b>Sec</b> Drybrush — accroche reliefs et textures.</div>
+        <div class="leg"><b>Contrast</b> Base + ombre en une seule passe.</div>
+        <div class="leg"><b>Éclairci</b> Highlight des arêtes qui captent la lumière.</div>
+        <div class="leg"><b>Effet</b> Technique : sang, rouille, glow lumineux…</div>
+      </div>
+      <p class="home-h">À propos</p>
+      <div class="about">
+        <p>Schémas <b>officiels / emblématiques</b> (couleurs de boîte « 'Eavy Metal » et guides GW). 40 000 compte des centaines de sous-factions : ce codex couvre les plus représentatives. Inventer son schéma reste légitime.</p>
+        <p>Les <b>équivalences Army Painter</b> et les <b>pastilles de couleur</b> sont approximatives : la correspondance exacte entre marques n'existe pas, et une teinte varie selon la sous-couche et la dilution.</p>
+        <p>Bascule <b>Citadel / Army P.</b> en haut à droite pour changer les noms partout.</p>
+        <p>Chaque étape indique aussi <b>où appliquer</b> la peinture sur la figurine (armure, creux, arêtes, liserés, lentilles…). Ces zones sont <b>indicatives</b> : adapte-les à la pose et aux détails de ton modèle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-schemes">
+    <div class="schemebar">
+      <label class="search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="Faction, schéma, peinture…" autocomplete="off">
+      </label>
+      <div class="chips" id="chips">
+        <span class="chip on" data-al="all">Tous</span>
+        <span class="chip" data-al="imperium">Imperium</span>
+        <span class="chip" data-al="chaos">Chaos</span>
+        <span class="chip" data-al="xenos">Xenos</span>
+      </div>
+    </div>
+    <main class="pad-bottom"><p class="count" id="count"></p><div id="content"></div></main>
+  </section>
+
+  <section class="view" id="view-list">
+    <div class="list-wrap pad-bottom">
+      <div class="printhead"><h1>Codex Chromatica — Liste de courses</h1><p id="printSub"></p></div>
+      <div class="list-head">
+        <h2>Liste de courses</h2>
+        <p>Toutes les peintures des schémas sélectionnés, dédoublonnées et regroupées par type.</p>
+        <div class="list-actions" id="listActions">
+          <button class="act" id="clearList">Vider</button>
+          <button class="act gold" id="printList">Imprimer</button>
+        </div>
+      </div>
+      <div class="selected-schemes" id="selSchemes"></div>
+      <div id="shop"></div>
+      <footer>CODEX CHROMATICA · Warhammer 40 000, Citadel &copy; Games Workshop · Army Painter &copy; The Army Painter · non officiel.</footer>
+    </div>
+  </section>
+
+  <nav class="bottomnav" id="nav">
+    <button class="navitem on" data-tab="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg><span>Accueil</span></button>
+    <button class="navitem" data-tab="schemes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg><span>Schémas</span></button>
+    <button class="navitem" data-tab="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1.3"/><circle cx="3.5" cy="12" r="1.3"/><circle cx="3.5" cy="18" r="1.3"/></svg><span>Liste</span><span class="nbadge empty" id="listBadge">0</span></button>
+  </nav>
+
+</div>
+<script>
+const P = {
+  "Chaos Black":{h:"#15151a",t:"Bombe",a:"Matt Black Primer"},
+  "Corax White":{h:"#eef0ec",t:"Base",a:"Matt White"},
+  "White Scar":{h:"#f4f5f1",t:"Couche",a:"Matt White"},
+  "Wraithbone":{h:"#d8cfb4",t:"Bombe",a:"Bone / Mummy Robes Primer"},
+  "Grey Seer":{h:"#c7c8c2",t:"Bombe",a:"Uniform Grey Primer"},
+  "Mechanicus Standard Grey":{h:"#44494d",t:"Bombe",a:"Uniform Grey"},
+  "Macragge Blue":{h:"#14508f",t:"Base",a:"Ultramarine Blue"},
+  "Altdorf Guard Blue":{h:"#1f5fa6",t:"Couche",a:"Ultramarine Blue"},
+  "Calgar Blue":{h:"#3a7cc4",t:"Couche",a:"Crystal Blue"},
+  "Kantor Blue":{h:"#16335f",t:"Base",a:"Deep Blue"},
+  "Alaitoc Blue":{h:"#4a6db0",t:"Couche",a:"Electric Blue"},
+  "Hoeth Blue":{h:"#6f95cf",t:"Couche",a:"Electric Blue"},
+  "Caledor Sky":{h:"#3f73b8",t:"Couche",a:"Crystal Blue"},
+  "Lothern Blue":{h:"#2f8fd6",t:"Couche",a:"Electric Blue"},
+  "Teclis Blue":{h:"#1f7fd0",t:"Couche",a:"Crystal Blue"},
+  "The Fang":{h:"#2f4d6b",t:"Base",a:"Stormy Blue"},
+  "Russ Grey":{h:"#5a7fa0",t:"Couche",a:"Wolf Grey"},
+  "Fenrisian Grey":{h:"#8fb0cf",t:"Couche",a:"Wolf Grey (clair)"},
+  "Thousand Sons Blue":{h:"#0e6e8c",t:"Base",a:"Hydra Turquoise"},
+  "Temple Guard Blue":{h:"#3aa3a0",t:"Couche",a:"Aquamarine"},
+  "Sotek Green":{h:"#0f7d7f",t:"Base",a:"Hydra Turquoise"},
+  "Talassar Blue":{h:"#1f6fb0",t:"Contrast",a:"Speedpaint Ultramarines"},
+  "Stegadon Scale Green":{h:"#16414a",t:"Base",a:"Deep Blue"},
+  "Mephiston Red":{h:"#9a1115",t:"Base",a:"Pure Red / Dragon Red"},
+  "Khorne Red":{h:"#6e1012",t:"Base",a:"Mars Red"},
+  "Wazdakka Red":{h:"#8e1418",t:"Couche",a:"Pure Red"},
+  "Evil Sunz Scarlet":{h:"#c01516",t:"Couche",a:"Pure Red"},
+  "Wild Rider Red":{h:"#d83a23",t:"Couche",a:"Lava Orange"},
+  "Squig Orange":{h:"#e0651f",t:"Couche",a:"Lava Orange"},
+  "Troll Slayer Orange":{h:"#e2541e",t:"Couche",a:"Lava Orange"},
+  "Retributor Armour":{h:"#b07a1e",t:"Métal",a:"Bright Gold / Greedy Gold"},
+  "Auric Armour Gold":{h:"#c79a45",t:"Métal",a:"Greedy Gold"},
+  "Liberator Gold":{h:"#c79a45",t:"Métal",a:"Greedy Gold"},
+  "Balthasar Gold":{h:"#6e5320",t:"Métal",a:"Tainted Gold"},
+  "Sycorax Bronze":{h:"#b08a4a",t:"Métal",a:"Bright Gold"},
+  "Leadbelcher":{h:"#6c7077",t:"Métal",a:"Gun Metal"},
+  "Ironbreaker":{h:"#9aa0a6",t:"Métal",a:"Plate Mail Metal"},
+  "Stormhost Silver":{h:"#cfd4d8",t:"Métal",a:"Shining Silver / Mithril"},
+  "Runefang Steel":{h:"#c9ced2",t:"Métal",a:"Mithril"},
+  "Necron Compound":{h:"#9fa6ac",t:"Sec",a:"—"},
+  "Caliban Green":{h:"#103a26",t:"Base",a:"Angel Green"},
+  "Warpstone Glow":{h:"#1f8a3b",t:"Couche",a:"Greenskin"},
+  "Moot Green":{h:"#56c14b",t:"Couche",a:"Goblin Green"},
+  "Warboss Green":{h:"#3a8f3a",t:"Base",a:"Greenskin"},
+  "Death Guard Green":{h:"#9aa066",t:"Base",a:"Necrotic Flesh"},
+  "Death World Forest":{h:"#4f6b34",t:"Couche",a:"Army Green"},
+  "Castellan Green":{h:"#2f4424",t:"Base",a:"Army Green"},
+  "Nurgling Green":{h:"#b3bb73",t:"Sec",a:"Necrotic Flesh"},
+  "Elysian Green":{h:"#4a5b32",t:"Couche",a:"Army Green"},
+  "Waaagh! Flesh":{h:"#1d5236",t:"Base",a:"Greenskin (foncé)"},
+  "Skarsnik Green":{h:"#4a9a6a",t:"Couche",a:"Greenskin"},
+  "Niblet Green":{h:"#7bbf55",t:"Sec",a:"Goblin Green"},
+  "Zandri Dust":{h:"#b0a063",t:"Base",a:"Desert Yellow"},
+  "Ushabti Bone":{h:"#cfc28b",t:"Couche",a:"Skeleton Bone"},
+  "Screaming Skull":{h:"#ddd9a3",t:"Couche",a:"Skeleton Bone (clair)"},
+  "Rakarth Flesh":{h:"#b7b39b",t:"Base",a:"Ash Grey"},
+  "Steel Legion Drab":{h:"#6b5d3e",t:"Base",a:"US Field Drab"},
+  "Mournfang Brown":{h:"#6e3b1f",t:"Base",a:"Oak Brown"},
+  "XV-88":{h:"#7a5a2a",t:"Base",a:"Leather Brown"},
+  "Balor Brown":{h:"#9a6f2a",t:"Couche",a:"Desert Yellow"},
+  "Zamesi Desert":{h:"#c79a3a",t:"Couche",a:"Desert Yellow (clair)"},
+  "Rhinox Hide":{h:"#4a2f2a",t:"Base",a:"Oak Brown (foncé)"},
+  "Gorthor Brown":{h:"#6a5240",t:"Couche",a:"Leather Brown"},
+  "Baneblade Brown":{h:"#a48a5c",t:"Couche",a:"Desert Yellow"},
+  "Cadian Fleshtone":{h:"#c07a52",t:"Couche",a:"Barbarian Flesh"},
+  "Kislev Flesh":{h:"#e0a877",t:"Couche",a:"Tanned Flesh"},
+  "Bugman's Glow":{h:"#9a5a45",t:"Base",a:"Barbarian Flesh"},
+  "Averland Sunset":{h:"#e0a51f",t:"Base",a:"Daemonic Yellow"},
+  "Yriel Yellow":{h:"#f2c41f",t:"Couche",a:"Daemonic Yellow"},
+  "Flash Gitz Yellow":{h:"#f7e34a",t:"Couche",a:"Lightning Yellow"},
+  "Celestra Grey":{h:"#8fa1a3",t:"Base",a:"Wolf Grey"},
+  "Ulthuan Grey":{h:"#c3d2cf",t:"Couche",a:"Ghost Grey"},
+  "Eshin Grey":{h:"#4a4d50",t:"Base",a:"Uniform Grey (foncé)"},
+  "Dawnstone":{h:"#8a8d8f",t:"Couche",a:"Uniform Grey"},
+  "Administratum Grey":{h:"#b6bab8",t:"Couche",a:"Ash Grey"},
+  "Skavenblight Dinge":{h:"#3c352f",t:"Base",a:"Dark Stone"},
+  "Black Templar":{h:"#1a1a1d",t:"Contrast",a:"Speedpaint Grim Black"},
+  "Apothecary White":{h:"#d7dcdc",t:"Contrast",a:"Speedpaint Medium White"},
+  "Magos Purple":{h:"#5a2d63",t:"Couche",a:"Alien Purple"},
+  "Naggaroth Night":{h:"#3a2a52",t:"Base",a:"Alien Purple"},
+  "Xereus Purple":{h:"#5b2e72",t:"Couche",a:"Alien Purple"},
+  "Nuln Oil":{h:"#1b1c1e",t:"Lavis",a:"Dark Tone"},
+  "Agrax Earthshade":{h:"#3a2c1e",t:"Lavis",a:"Strong Tone"},
+  "Reikland Fleshshade":{h:"#7a3320",t:"Lavis",a:"Flesh Wash / Soft Tone"},
+  "Drakenhof Nightshade":{h:"#15233f",t:"Lavis",a:"Blue Tone"},
+  "Biel-Tan Green":{h:"#163a2a",t:"Lavis",a:"Green Tone"},
+  "Carroburg Crimson":{h:"#4a0f1c",t:"Lavis",a:"Red Tone"},
+  "Seraphim Sepia":{h:"#6e4a18",t:"Lavis",a:"Soft Tone / Sepia"},
+  "Casandora Yellow":{h:"#b8861a",t:"Lavis",a:"Yellow Tone"},
+  "Athonian Camoshade":{h:"#3f4a1f",t:"Lavis",a:"Military Shader"},
+  "Druchii Violet":{h:"#2c1538",t:"Lavis",a:"Purple Tone"},
+  "Tesseract Glow":{h:"#6fe39a",t:"Technique",a:"Speedpaint Malignant Green"},
+  "Nurgle's Rot":{h:"#8fae5a",t:"Technique",a:"—"},
+  "Blood for the Blood God":{h:"#6e0d10",t:"Technique",a:"Effects: red"},
+  "Typhus Corrosion":{h:"#28231d",t:"Technique",a:"—"},
+  "Ryza Rust":{h:"#b5611f",t:"Technique",a:"—"},
+  "Nihilakh Oxide":{h:"#62b8a6",t:"Technique",a:"—"},
+  "Aethermatic Blue":{h:"#3aa6c4",t:"Technique",a:"Speedpaint Cloudburst Blue"}
+};
+const DATA = [
+{id:"space-marines",al:"imperium",name:"Adeptus Astartes — Space Marines",
+ blurb:"La faction la plus populaire du jeu. Chaque chapitre possède son héraldique : chapitres fondateurs, successeurs connus et Chevaliers Gris.",
+ schemes:[
+  {n:"Ultramarines",t:{p:"#14508f",s:"#c79a45",tr:"#f4f5f1"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Macragge Blue","Armure"],["Lavis","Drakenhof Nightshade","Armure — creux & jointures"],["Couche","Calgar Blue","Armure (panneaux)"],["Éclairci","Fenrisian Grey","Arêtes de l'armure"],["Métal","Retributor Armour","Liserés & aquila (or)"],["Lavis","Reikland Fleshshade","Liserés or — creux"]],no:"Liserés blancs : <b>Celestra Grey</b> monté à <b>Ulthuan Grey</b>. Le bleu est couvrant et indulgent : idéal pour débuter."},
+  {n:"Blood Angels",t:{p:"#9a1115",s:"#15151a",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Armure"],["Lavis","Carroburg Crimson","Armure — creux"],["Couche","Evil Sunz Scarlet","Armure (panneaux)"],["Éclairci","Wild Rider Red","Arêtes de l'armure"],["Métal","Retributor Armour","Ornements & sang d'ailes (or)"]],no:"Viser un rouge vif et chaud. Express : Contrast <b>Blood Angels Red</b> sur Wraithbone."},
+  {n:"Dark Angels",t:{p:"#103a26",s:"#cfc28b",tr:"#9a1115"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Caliban Green","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Warpstone Glow","Armure (panneaux)"],["Éclairci","Moot Green","Arêtes de l'armure"]],no:"Trois sous-armées : Verts, <b>Deathwing</b> (os : Zandri Dust→Seraphim Sepia→Ushabti Bone→Screaming Skull) et <b>Ravenwing</b> (noir)."},
+  {n:"Imperial Fists",t:{p:"#e0a51f",s:"#9a1115",tr:"#15151a"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Averland Sunset","Armure"],["Lavis","Casandora Yellow","Armure — creux uniquement"],["Couche","Yriel Yellow","Armure (panneaux)"],["Éclairci","Flash Gitz Yellow","Arêtes de l'armure"]],no:"Le jaune est la couleur la plus difficile (couches fines multiples). Raccourci : Contrast <b>Imperial Fist</b> sur Wraithbone."},
+  {n:"White Scars",t:{p:"#f4f5f1",s:"#9a1115",tr:"#c79a45"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Celestra Grey","Armure"],["Lavis","Apothecary White","Lignes de panneaux uniquement"],["Couche","Ulthuan Grey","Armure (panneaux)"],["Éclairci","White Scar","Arêtes de l'armure"]],no:"Ne jamais peindre le blanc pur : partir d'un gris très clair, réserver le White Scar aux arêtes. Détails rouges : Mephiston Red."},
+  {n:"Raven Guard",t:{p:"#15151a",s:"#f4f5f1",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure"],["Éclairci","Eshin Grey","Arêtes de l'armure"],["Éclairci","Dawnstone","Arêtes fines (pointes)"]],no:"Noir = subtil. Highlights fins sur les arêtes seulement. Épaulières blanches : Celestra Grey→Ulthuan Grey."},
+  {n:"Salamanders",t:{p:"#1f8a3b",s:"#15151a",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Warpstone Glow","Armure"],["Lavis","Biel-Tan Green","Armure — creux"],["Couche","Warpstone Glow","Armure (panneaux)"],["Éclairci","Moot Green","Arêtes de l'armure"]],no:"Vert plus émeraude que les Dark Angels. Flammes : Yriel Yellow + Troll Slayer Orange."},
+  {n:"Iron Hands",t:{p:"#15151a",s:"#9aa0a6",tr:"#f4f5f1"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure"],["Éclairci","Eshin Grey","Arêtes de l'armure"],["Métal","Leadbelcher","Bionics & augmétiques"],["Lavis","Nuln Oil","Bionics — creux"],["Éclairci","Stormhost Silver","Bionics — arêtes"]],no:"Noir + nombreuses augmétiques métalliques : terrain idéal pour s'entraîner aux métaux."},
+  {n:"Space Wolves",t:{p:"#2f4d6b",s:"#e0a51f",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","The Fang","Armure"],["Lavis","Agrax Earthshade","Armure — creux"],["Couche","Russ Grey","Armure (panneaux)"],["Éclairci","Fenrisian Grey","Arêtes de l'armure"]],no:"Bleu-gris caractéristique. Détails jaunes : Averland Sunset. Fourrures et runes en bonus."},
+  {n:"Black Templars",t:{p:"#15151a",s:"#f4f5f1",tr:"#9a1115"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure"],["Éclairci","Eshin Grey","Arêtes de l'armure"],["Couche","Celestra Grey","Tabards & épaulières (blanc)"],["Éclairci","Ulthuan Grey","Tabards — arêtes"]],no:"Armure noire, tabards et épaulières blancs, croix pattées <b>Mephiston Red</b>. Chaînes : Leadbelcher."},
+  {n:"Crimson Fists",t:{p:"#16335f",s:"#9a1115",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Kantor Blue","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Alaitoc Blue","Armure (panneaux)"],["Éclairci","Hoeth Blue","Arêtes de l'armure"]],no:"Poings rouges : Mephiston Red éclairci Evil Sunz Scarlet."},
+  {n:"Flesh Tearers",t:{p:"#6e1012",s:"#15151a",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Wazdakka Red","Armure (panneaux)"],["Éclairci","Squig Orange","Arêtes de l'armure"]],no:"Successeurs des Blood Angels, rouge plus sombre. Blason noir à scie circulaire."},
+  {n:"Deathwatch",t:{p:"#15151a",s:"#9aa0a6",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure (corps)"],["Métal","Leadbelcher","Bras gauche & arme (argent)"],["Lavis","Nuln Oil","Bras gauche — creux"],["Éclairci","Stormhost Silver","Bras gauche — arêtes"]],no:"Bras gauche argenté ; épaulière gauche aux couleurs du chapitre d'origine — parfait pour varier les schémas."},
+  {n:"Grey Knights",t:{p:"#9aa0a6",s:"#14508f",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Leadbelcher","Armure (métal)"],["Lavis","Nuln Oil","Armure — creux"],["Sec","Ironbreaker","Armure — reliefs"],["Éclairci","Stormhost Silver","Arêtes de l'armure"],["Couche","Kantor Blue","Armes de force (bleu)"]],no:"Armes de force bleues : Kantor Blue→Caledor Sky→Lothern Blue. Détails or : Retributor Armour."},
+  {n:"Blood Ravens",t:{p:"#6e1012",s:"#cfc28b",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Armure"],["Lavis","Agrax Earthshade","Armure — creux"],["Couche","Wazdakka Red","Armure (panneaux)"],["Éclairci","Squig Orange","Arêtes de l'armure"]],no:"Détails os (aquila, sceaux) : Zandri Dust→Seraphim Sepia→Ushabti Bone."},
+  {n:"Lamenters",t:{p:"#e0a51f",s:"#15151a",tr:"#9a1115"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Averland Sunset","Armure"],["Lavis","Casandora Yellow","Armure — creux"],["Couche","Yriel Yellow","Armure (panneaux)"],["Éclairci","Flash Gitz Yellow","Arêtes de l'armure"]],no:"Damier noir-et-jaune emblématique : jaune d'abord, puis carrés noirs au pinceau fin sur les épaulières."},
+  {n:"Minotaurs",t:{p:"#b08a4a",s:"#9a1115",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Balthasar Gold","Armure (bronze)"],["Lavis","Agrax Earthshade","Armure — creux"],["Couche","Sycorax Bronze","Armure (panneaux)"],["Éclairci","Stormhost Silver","Arêtes de l'armure"]],no:"Armure bronze inhabituelle. Plumets rouges : Mephiston Red."},
+  {n:"Silver Skulls",t:{p:"#9aa0a6",s:"#9a1115",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Leadbelcher","Armure (argent)"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Ironbreaker","Armure (panneaux)"],["Éclairci","Stormhost Silver","Arêtes de l'armure"]],no:"Armure argent ; genou gauche et bandeau de casque rouges (Mephiston Red)."},
+  {n:"Howling Griffons",t:{p:"#9a1115",s:"#e0a51f",tr:"#15151a"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Mephiston Red","Moitiés/quartiers rouges"],["Couche","Evil Sunz Scarlet","Zones rouges (éclairci)"],["Base","Averland Sunset","Moitiés/quartiers jaunes"],["Couche","Yriel Yellow","Zones jaunes (éclairci)"]],no:"Un des schémas les plus durs : panneaux mi-rouge mi-jaune. Ruban de masquage ou main très sûre."},
+  {n:"Angels of Absolution",t:{p:"#cfc28b",s:"#103a26",tr:"#9a1115"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Zandri Dust","Armure (os)"],["Lavis","Seraphim Sepia","Armure — creux"],["Couche","Ushabti Bone","Armure (panneaux)"],["Éclairci","Screaming Skull","Arêtes de l'armure"]],no:"Successeur Dark Angels en armure os/crème. Détails verts : Caliban Green."},
+  {n:"Aurora Chapter",t:{p:"#103a26",s:"#c79a45",tr:"#f4f5f1"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Caliban Green","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Warpstone Glow","Armure (panneaux)"],["Éclairci","Moot Green","Arêtes de l'armure"]],no:"Successeur Ultramarines en vert sombre à liserés or et blanc."},
+  {n:"Carcharodons (Space Sharks)",t:{p:"#4a4d50",s:"#9a1115",tr:"#cfc28b"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Eshin Grey","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Dawnstone","Armure (panneaux)"],["Éclairci","Administratum Grey","Arêtes de l'armure"]],no:"Gris ardoise sombre, prédateur des abysses. Gueule/marquages rouge sang, os usé."},
+  {n:"Executioners",t:{p:"#9aa0a6",s:"#1f6fb0",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Leadbelcher","Armure (sous-couche métal)"],["Contrast","Talassar Blue","Armure (teinte bleu métallisé)"],["Métal","Retributor Armour","Liserés (or)"]],no:"Effet « bleu métallisé » : Talassar Blue (Contrast) par-dessus Leadbelcher."}
+ ]},
+{id:"astra-militarum",al:"imperium",name:"Astra Militarum — Garde Impériale",
+ blurb:"La masse d'infanterie de l'Imperium. Chaque monde fournit son régiment, avec sa propre identité visuelle.",
+ schemes:[
+  {n:"Cadian Shock Troops",t:{p:"#6b5d3e",s:"#2f4424",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Steel Legion Drab","Uniforme / treillis"],["Lavis","Agrax Earthshade","Uniforme — creux & plis"],["Couche","Steel Legion Drab","Uniforme (relevé)"],["Éclairci","Baneblade Brown","Uniforme — plis saillants"],["Base","Castellan Green","Plastron, casque & genouillères"]],no:"Plastrons vert kaki, uniforme drab, peau Cadian Fleshtone→Kislev Flesh. Métal : Leadbelcher + Nuln Oil."},
+  {n:"Death Korps of Krieg",t:{p:"#3c352f",s:"#15151a",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Skavenblight Dinge","Long manteau"],["Lavis","Nuln Oil","Manteau — creux"],["Éclairci","Dawnstone","Manteau — plis"],["Métal","Leadbelcher","Masque à gaz, casque & arme"]],no:"Manteaux gris-brun sombre, masques à gaz. Ambiance Première Guerre mondiale. Cuir : Rhinox Hide."},
+  {n:"Catachan Jungle Fighters",t:{p:"#4f6b34",s:"#9a5a45",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Death World Forest","Pantalon & treillis"],["Lavis","Agrax Earthshade","Treillis — creux"],["Couche","Elysian Green","Treillis (relevé)"],["Base","Bugman's Glow","Peau (torse, bras)"],["Couche","Kislev Flesh","Peau — éclairci"]],no:"Pantalons vert jungle, torses nus burinés, bandeaux. Métal usé."},
+  {n:"Armageddon Steel Legion",t:{p:"#6b5d3e",s:"#15151a",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Steel Legion Drab","Long manteau"],["Lavis","Agrax Earthshade","Manteau — creux"],["Couche","Steel Legion Drab","Manteau (relevé)"],["Éclairci","Baneblade Brown","Manteau — plis"],["Métal","Leadbelcher","Masque à gaz & arme"]],no:"Le régiment qui a donné son nom au « Steel Legion Drab » : longs manteaux drab, masques à gaz."},
+  {n:"Vostroyan Firstborn",t:{p:"#9a1115",s:"#b08a4a",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Manteau (rouge)"],["Lavis","Nuln Oil","Manteau — creux"],["Couche","Evil Sunz Scarlet","Manteau (relevé)"],["Métal","Balthasar Gold","Ornements, boutons & casque"],["Éclairci","Retributor Armour","Ornements or — arêtes"]],no:"Uniformes rouges très ornés d'or/laiton, style impérial russe. Fourrures sombres."},
+  {n:"Tallarn Desert Raiders",t:{p:"#b0a063",s:"#6e3b1f",tr:"#15151a"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Zandri Dust","Robes & keffieh (sable)"],["Lavis","Agrax Earthshade","Robes — creux & plis"],["Couche","Ushabti Bone","Robes (relevé)"],["Base","Mournfang Brown","Cuir, sangles & cartouchières"]],no:"Robes et keffieh sable du désert, ceinturons cuir. Peau hâlée."},
+  {n:"Mordian Iron Guard",t:{p:"#16335f",s:"#9a1115",tr:"#e0a51f"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Kantor Blue","Uniforme (bleu nuit)"],["Lavis","Nuln Oil","Uniforme — creux"],["Couche","Alaitoc Blue","Uniforme (relevé)"],["Base","Mephiston Red","Bandes & parements (rouge)"],["Métal","Leadbelcher","Arme, boutons & casque"]],no:"Uniformes bleu nuit de parade à bandes rouges et boutons dorés. Discipline parfaite."},
+  {n:"Valhallan Ice Warriors",t:{p:"#4a4d50",s:"#6e3b1f",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Eshin Grey","Long manteau (gris)"],["Lavis","Nuln Oil","Manteau — creux"],["Couche","Dawnstone","Manteau (relevé)"],["Éclairci","Administratum Grey","Manteau — plis"],["Base","Mournfang Brown","Toque de fourrure & gants"]],no:"Longs manteaux gris, toques de fourrure brune. Inspiration Armée Rouge / Stalingrad."}
+ ]},
+{id:"custodes",al:"imperium",name:"Adeptus Custodes",
+ blurb:"Les gardiens dorés de l'Empereur. Armure auramite : tout l'enjeu est un or riche et profond.",
+ schemes:[
+  {n:"Or des Custodes (Talons)",t:{p:"#b07a1e",s:"#9a1115",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Retributor Armour","Armure (or)"],["Lavis","Reikland Fleshshade","Armure — creux"],["Couche","Auric Armour Gold","Armure (panneaux)"],["Éclairci","Stormhost Silver","Arêtes de l'armure"]],no:"Alternative NMM brun : Mournfang Brown→XV-88→Balor Brown→Zamesi Desert→+White Scar. Plastrons rouges, plumets en crin."}
+ ]},
+{id:"mechanicus",al:"imperium",name:"Adeptus Mechanicus",
+ blurb:"Le clergé technologique de Mars. Robes rouge sombre et profusion de métal et de câbles.",
+ schemes:[
+  {n:"Skitarii de Mars",t:{p:"#6e1012",s:"#6c7077",tr:"#b08a4a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Robes & capes"],["Lavis","Nuln Oil","Robes — creux"],["Couche","Wazdakka Red","Robes (relevé)"],["Éclairci","Wild Rider Red","Robes — plis"],["Métal","Leadbelcher","Mécanismes, armes & jambes"]],no:"Robes rouge Mars, métal Leadbelcher + Nuln Oil, laiton Balthasar Gold. Peau pâle : Rakarth Flesh."}
+ ]},
+{id:"sororitas",al:"imperium",name:"Adepta Sororitas — Sœurs de Bataille",
+ blurb:"Les guerrières fanatiques de l'Ecclesiarchie. Armure laquée et de nombreux ordres aux couleurs propres.",
+ schemes:[
+  {n:"Order of Our Martyred Lady",t:{p:"#15151a",s:"#9a1115",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure"],["Éclairci","Eshin Grey","Arêtes de l'armure"],["Métal","Leadbelcher","Liserés & métal"],["Lavis","Nuln Oil","Liserés — creux"],["Couche","Mephiston Red","Épaulières & détails rouges"]],no:"Armure noire éclaircie aux arêtes, détails rouge sang. Liserés argent : Ironbreaker."},
+  {n:"Order of the Bloody Rose",t:{p:"#9a1115",s:"#15151a",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Evil Sunz Scarlet","Armure (panneaux)"],["Éclairci","Wild Rider Red","Arêtes de l'armure"]],no:"Variante à dominante rouge. Robes noires en contraste."},
+  {n:"Order of the Valorous Heart",t:{p:"#cfc28b",s:"#9a1115",tr:"#6c7077"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Zandri Dust","Armure (os)"],["Lavis","Seraphim Sepia","Armure — creux"],["Couche","Ushabti Bone","Armure (panneaux)"],["Éclairci","Screaming Skull","Arêtes de l'armure"]],no:"Armure os/parchemin pénitente, détails rouges et métal sombre."},
+  {n:"Order of the Argent Shroud",t:{p:"#cfd4d8",s:"#15151a",tr:"#f4f5f1"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Leadbelcher","Armure (argent)"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Ironbreaker","Armure (panneaux)"],["Éclairci","Stormhost Silver","Arêtes de l'armure"]],no:"Armure argent froide, robes blanches. Sobre et martial."}
+ ]},
+{id:"imperial-knights",al:"imperium",name:"Imperial Knights — Chevaliers Impériaux",
+ blurb:"Des titans de combat pilotés par des nobles. Grandes surfaces planes : idéal pour dégradés et héraldique.",
+ schemes:[
+  {n:"House Terryn",t:{p:"#16335f",s:"#9a1115",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Kantor Blue","Plaques de coque (bleu)"],["Lavis","Nuln Oil","Plaques — creux"],["Couche","Alaitoc Blue","Plaques (panneaux)"],["Éclairci","Hoeth Blue","Arêtes des plaques"],["Métal","Retributor Armour","Liserés, armes & vérins (or/métal)"]],no:"Bleu roi + or. Plaques internes : Leadbelcher + Nuln Oil. Parfait pour bandes d'avertissement jaune/noir."}
+ ]},
+{id:"csm",al:"chaos",name:"Heretic Astartes — Chaos Space Marines",
+ blurb:"Les Légions Traîtresses dévouées aux Dieux Sombres. Les quatre légions vouées à un dieu unique ont leur propre faction.",
+ schemes:[
+  {n:"Black Legion",t:{p:"#15151a",s:"#b07a1e",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure"],["Éclairci","Eshin Grey","Arêtes de l'armure"],["Métal","Leadbelcher","Métal nu (jambes, armes)"],["Métal","Retributor Armour","Liserés & ornements (or)"],["Lavis","Agrax Earthshade","Liserés or — creux"]],no:"Noir à liserés dorés/laiton. La légion d'Abaddon : sobre et menaçante."},
+  {n:"Iron Warriors",t:{p:"#6c7077",s:"#e0a51f",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Leadbelcher","Armure (métal)"],["Lavis","Nuln Oil","Armure — creux"],["Éclairci","Ironbreaker","Arêtes de l'armure"],["Effet","Ryza Rust","Bas d'armure & métal (rouille)"]],no:"Acier nu + bandes de danger jaune/noir (Averland Sunset). Rouille : Typhus Corrosion + Ryza Rust."},
+  {n:"Night Lords",t:{p:"#16335f",s:"#15151a",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Kantor Blue","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Éclairci","Alaitoc Blue","Arêtes de l'armure"],["Éclairci","Fenrisian Grey","Arêtes fines & éclairs"]],no:"Bleu nuit foncé, éclairs sur les épaulières (Ulthuan Grey→White Scar). Ailes de chauve-souris."},
+  {n:"Alpha Legion",t:{p:"#16414a",s:"#1f8a3b",tr:"#9aa0a6"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Stegadon Scale Green","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Éclairci","Sotek Green","Arêtes de l'armure"],["Couche","Temple Guard Blue","Reflets d'écailles (pointes)"]],no:"Bleu-vert métallisé chatoyant, écailles de serpent. Reflets turquoise sur arêtes."},
+  {n:"Word Bearers",t:{p:"#6e1012",s:"#15151a",tr:"#b08a4a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Wazdakka Red","Armure (panneaux)"],["Métal","Balthasar Gold","Liserés, textes & icônes (laiton)"]],no:"Rouge sombre et texte chaotique gravé. Plus terne que les World Eaters, beaucoup de laiton."},
+  {n:"Emperor's Children",t:{p:"#5b2e72",s:"#9aa0a6",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Naggaroth Night","Armure"],["Lavis","Druchii Violet","Armure — creux"],["Couche","Xereus Purple","Armure (panneaux)"],["Éclairci","Magos Purple","Arêtes de l'armure"],["Métal","Retributor Armour","Liserés (or)"]],no:"Violet et or de Slaanesh. (La légion possède désormais sa propre faction dédiée.)"},
+  {n:"Red Corsairs",t:{p:"#9a1115",s:"#15151a",tr:"#b08a4a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Mephiston Red","Armure (panneaux)"],["Éclairci","Evil Sunz Scarlet","Arêtes de l'armure"],["Métal","Leadbelcher","Métal, pièces noires & looté"]],no:"Renégats d'Huron Blackheart : rouge et noir, équipement disparate et pillé."}
+ ]},
+{id:"death-guard",al:"chaos",name:"Death Guard",
+ blurb:"Les fils pestilentiels de Mortarion, dévoués à Nurgle. Armure vert pâle corrodée, chairs boursouflées.",
+ schemes:[
+  {n:"Death Guard (studio)",t:{p:"#9aa066",s:"#b08a4a",tr:"#6e3b1f"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Death Guard Green","Armure"],["Lavis","Athonian Camoshade","Armure — creux"],["Sec","Nurgling Green","Armure — reliefs & usure"],["Métal","Retributor Armour","Liserés & cornes (laiton)"],["Lavis","Agrax Earthshade","Liserés — creux"],["Effet","Typhus Corrosion","Bas d'armure & métal (corrosion)"]],no:"Vert maladif monté de Death World Forest. Rouille : Typhus Corrosion + Ryza Rust. Bave : <b>Nurgle's Rot</b>."}
+ ]},
+{id:"thousand-sons",al:"chaos",name:"Thousand Sons",
+ blurb:"Les sorciers de Magnus dévoués à Tzeentch. Armure bleu-turquoise et or, magie omniprésente.",
+ schemes:[
+  {n:"Thousand Sons (studio)",t:{p:"#0e6e8c",s:"#b07a1e",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Retributor Armour","Liserés & ornements (or)"],["Lavis","Reikland Fleshshade","Liserés or — creux"],["Base","Thousand Sons Blue","Armure (panneaux)"],["Lavis","Nuln Oil","Armure — creux nets"],["Couche","Temple Guard Blue","Armure (relevé)"],["Éclairci","Stormhost Silver","Arêtes de l'armure"]],no:"Or d'abord, puis panneaux bleus lavés au Nuln Oil pour des creux nets. Feu de sorcellerie lumineux."}
+ ]},
+{id:"world-eaters",al:"chaos",name:"World Eaters",
+ blurb:"Les berserkers d'Angron dévoués à Khorne. Rouge sang et laiton, montagnes de crânes.",
+ schemes:[
+  {n:"World Eaters (studio)",t:{p:"#9a1115",s:"#b08a4a",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Armure"],["Couche","Mephiston Red","Armure (fondu)"],["Éclairci","Evil Sunz Scarlet","Arêtes de l'armure"],["Métal","Retributor Armour","Liserés & ceinturons (laiton)"],["Lavis","Agrax Earthshade","Liserés — creux"],["Effet","Blood for the Blood God","Tranchants des armes (sang)"]],no:"Cœur du schéma : fondu Khorne Red→Mephiston Red. Câbles verts (Castellan Green). Sang sur les armes."}
+ ]},
+{id:"chaos-daemons",al:"chaos",name:"Chaos Daemons — Démons",
+ blurb:"Les entités du Warp. Un schéma par Puissance de la Ruine.",
+ schemes:[
+  {n:"Bloodletters (Khorne)",t:{p:"#9a1115",s:"#15151a",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Peau / corps"],["Lavis","Carroburg Crimson","Peau — creux"],["Couche","Wazdakka Red","Peau (relevé)"],["Éclairci","Wild Rider Red","Peau — reliefs"]],no:"Peau rouge ardente, cornes os (Zandri Dust). Lames Hellblades en métal froid."},
+  {n:"Plaguebearers (Nurgle)",t:{p:"#9aa066",s:"#6e3b1f",tr:"#b08a4a"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Death Guard Green","Peau / corps"],["Lavis","Athonian Camoshade","Peau — creux"],["Couche","Death World Forest","Peau (relevé)"],["Éclairci","Nurgling Green","Peau — reliefs"]],no:"Chair verte purulente. Plaies : Bugman's Glow + Carroburg Crimson + Nurgle's Rot brillant."},
+  {n:"Pink Horrors (Tzeentch)",t:{p:"#5b2e72",s:"#0e6e8c",tr:"#e0a51f"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Xereus Purple","Peau / corps"],["Lavis","Druchii Violet","Peau — creux"],["Couche","Magos Purple","Peau (relevé)"],["Éclairci","Magos Purple","Peau — reliefs"]],no:"Rose-magenta vif possible via Contrast. Flammes bleues et jaunes lumineuses."},
+  {n:"Daemonettes (Slaanesh)",t:{p:"#b7b39b",s:"#5b2e72",tr:"#9aa0a6"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Rakarth Flesh","Peau / corps"],["Lavis","Druchii Violet","Peau — creux"],["Couche","Rakarth Flesh","Peau (relevé)"],["Éclairci","Administratum Grey","Peau — reliefs"]],no:"Peau pâle nacrée lavée de violet. Chevelure et pinces en teintes contrastées."}
+ ]},
+{id:"necrons",al:"xenos",name:"Necrons",
+ blurb:"Les seigneurs-machines immortels. Métal froid + énergie luminescente verte (ou autre).",
+ schemes:[
+  {n:"Sautekh (argent classique)",t:{p:"#6c7077",s:"#1d5236",tr:"#b07a1e"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Leadbelcher","Corps métallique"],["Lavis","Nuln Oil","Corps — creux"],["Éclairci","Ironbreaker","Corps — reliefs"],["Éclairci","Stormhost Silver","Arêtes du corps"],["Effet","Tesseract Glow","Tiges, yeux & armes (énergie)"]],no:"Métal lavé au Nuln Oil = gris industriel. Énergie : Warboss Green→Moot Green→point blanc, ou <b>Tesseract Glow</b>."},
+  {n:"Szarekhan (or & énergie)",t:{p:"#b07a1e",s:"#1d5236",tr:"#cfd4d8"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Retributor Armour","Corps (or)"],["Lavis","Reikland Fleshshade","Corps — creux"],["Éclairci","Liberator Gold","Corps — reliefs"],["Éclairci","Stormhost Silver","Arêtes du corps"],["Effet","Tesseract Glow","Tiges & yeux (énergie)"]],no:"Dynastie du Roi Silencieux : dominante or, idéale pour OSL vert."},
+  {n:"Novokh (rouge & métal)",t:{p:"#9a1115",s:"#6c7077",tr:"#1d5236"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Leadbelcher","Squelette métallique"],["Lavis","Nuln Oil","Squelette — creux"],["Base","Khorne Red","Plaques d'armure (rouge)"],["Couche","Mephiston Red","Plaques (relevé)"],["Effet","Tesseract Glow","Tiges & yeux (énergie)"]],no:"Dynastie « gladiateur » : plaques rouge sang sur squelette métal. Énergie verte vive."},
+  {n:"Dynastie ancienne (os)",t:{p:"#b0a063",s:"#1d5236",tr:"#6c7077"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Zandri Dust","Corps (os)"],["Lavis","Agrax Earthshade","Corps — creux"],["Couche","Ushabti Bone","Corps (relevé)"],["Éclairci","Screaming Skull","Arêtes du corps"],["Effet","Tesseract Glow","Tiges & yeux (énergie)"]],no:"Corps os patiné évoquant des millénaires de sommeil. Très thématique avec des tiges vertes."},
+  {n:"Nihilakh (vert-de-gris)",t:{p:"#62b8a6",s:"#b08a4a",tr:"#1d5236"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Balthasar Gold","Corps (bronze)"],["Lavis","Agrax Earthshade","Corps — creux"],["Effet","Nihilakh Oxide","Plaques & creux (patine vert-de-gris)"],["Éclairci","Sycorax Bronze","Arêtes du corps"],["Effet","Tesseract Glow","Tiges & yeux (énergie)"]],no:"Dynastie aux antiques machines oxydées : bronze patiné de vert-de-gris (Nihilakh Oxide en glacis dans les creux)."},
+  {n:"Thokt (énergie bleue)",t:{p:"#9aa0a6",s:"#3aa6c4",tr:"#16335f"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Leadbelcher","Corps métallique"],["Lavis","Nuln Oil","Corps — creux"],["Éclairci","Stormhost Silver","Arêtes du corps"],["Effet","Aethermatic Blue","Tiges, yeux & armes (énergie bleue)"]],no:"Corps argent froid, mais l'énergie est bleu électrique au lieu du vert. Ajoute un point blanc au cœur des lueurs."},
+  {n:"Mephrit (or ardent)",t:{p:"#b07a1e",s:"#f7e34a",tr:"#cfd4d8"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Retributor Armour","Corps (or)"],["Lavis","Reikland Fleshshade","Corps — creux"],["Éclairci","Liberator Gold","Arêtes du corps"],["Couche","Yriel Yellow","Sources d'énergie (base)"],["Effet","Flash Gitz Yellow","Tiges & yeux (lueur ardente)"]],no:"Dynastie solaire : or dominant et énergie jaune-blanc ardente (monte Flash Gitz Yellow → point blanc)."}
+ ]},
+{id:"orks",al:"xenos",name:"Orks",
+ blurb:"Champignons guerriers brutaux. La peau verte les unit ; les clans donnent la couleur dominante.",
+ schemes:[
+  {n:"Peau d'Ork (universelle)",t:{p:"#1d5236",s:"#3a8f3a",tr:"#7bbf55"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Waaagh! Flesh","Peau"],["Lavis","Biel-Tan Green","Peau — creux"],["Couche","Warboss Green","Peau (relevé)"],["Sec","Skarsnik Green","Peau — reliefs"],["Éclairci","Niblet Green","Peau — pointes (nez, jointures)"]],no:"La base de tout Ork. Express : Contrast vert sur Wraithbone. Dents/cornes : os ; cuir : Mournfang Brown."},
+  {n:"Goffs (noir & rouge)",t:{p:"#15151a",s:"#9a1115",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Vêtements & cuir (noir)"],["Éclairci","Eshin Grey","Vêtements — plis"],["Base","Mephiston Red","Détails rouges (tissus)"],["Métal","Leadbelcher","Armes & ferrailles"]],no:"Le plus gros clan : vêtements noirs, détails rouges."},
+  {n:"Evil Sunz (rouge)",t:{p:"#9a1115",s:"#15151a",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Carrosserie / armure"],["Lavis","Nuln Oil","Carrosserie — creux"],["Couche","Evil Sunz Scarlet","Carrosserie (relevé)"],["Éclairci","Wild Rider Red","Arêtes"]],no:"Clan des bolides : « red wunz go fasta ». Métal usé + rouille."},
+  {n:"Bad Moons (jaune)",t:{p:"#e0a51f",s:"#15151a",tr:"#6c7077"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Averland Sunset","Vêtements / armure (jaune)"],["Lavis","Casandora Yellow","Creux"],["Couche","Yriel Yellow","Relevé"],["Éclairci","Flash Gitz Yellow","Arêtes"]],no:"Clan le plus riche : jaune flashy. Damiers noir/jaune fréquents."},
+  {n:"Deathskulls (bleu)",t:{p:"#16335f",s:"#1d5236",tr:"#6c7077"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Kantor Blue","Vêtements & peinture de guerre"],["Lavis","Nuln Oil","Creux"],["Couche","Macragge Blue","Relevé"],["Éclairci","Calgar Blue","Arêtes"]],no:"Pilleurs superstitieux : peinture de guerre bleue « porte-bonheur », matériel looté bariolé."},
+  {n:"Snakebites (cuir & brun)",t:{p:"#6e3b1f",s:"#1d5236",tr:"#b0a063"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mournfang Brown","Cuirs & fourrures"],["Lavis","Agrax Earthshade","Cuir — creux"],["Couche","Gorthor Brown","Cuir (relevé)"],["Éclairci","Baneblade Brown","Cuir — reliefs"]],no:"Clan traditionaliste : peaux, cuirs et bêtes. Peu de métal, beaucoup d'os et de fourrure."},
+  {n:"Blood Axes (camo)",t:{p:"#6b5d3e",s:"#2f4424",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Steel Legion Drab","Vêtements & treillis (kaki)"],["Lavis","Agrax Earthshade","Vêtements — creux"],["Couche","Baneblade Brown","Vêtements (relevé)"],["Base","Castellan Green","Taches de camouflage"],["Métal","Leadbelcher","Armes & ferrailles"]],no:"Clan « rusé » imitant la Garde : treillis camouflé et matériel impérial looté. Peau verte habituelle."},
+  {n:"Freebooterz (pirates)",t:{p:"#9a1115",s:"#15151a",tr:"#c79a45"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Manteau & habits"],["Lavis","Nuln Oil","Habits — creux"],["Couche","Evil Sunz Scarlet","Habits (relevé)"],["Base","Chaos Black","Chapeau & bottes"],["Métal","Retributor Armour","Or, dents & breloques"]],no:"Bande hétéroclite : couleurs vives, noir et or de pirate. Aucune règle de couleur — ose les contrastes."},
+  {n:"Squigs (bestioles)",t:{p:"#9a1115",s:"#f4f5f1",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Khorne Red","Corps"],["Lavis","Carroburg Crimson","Corps — creux"],["Couche","Wazdakka Red","Corps (relevé)"],["Éclairci","Wild Rider Red","Corps — reliefs"],["Base","White Scar","Grandes dents & yeux"]],no:"Les squigs rouges classiques (Squig Hoppers, attendants). Gueule sombre, grandes dents blanches."}
+ ]},
+{id:"aeldari",al:"xenos",name:"Aeldari — Craftworlds",
+ blurb:"Les Elfes de l'espace, anciens et raffinés. Chaque Vaisseau-Monde a sa couleur de runes ; armure lisse propice aux dégradés.",
+ schemes:[
+  {n:"Ulthwé (noir & os)",t:{p:"#15151a",s:"#cfc28b",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Chaos Black","Armure lisse"],["Éclairci","Eshin Grey","Arêtes de l'armure"],["Couche","Dawnstone","Arêtes fines"],["Base","Zandri Dust","Casque & runes (os)"],["Couche","Screaming Skull","Casque & runes (éclairci)"]],no:"Armure noire, casques/runes os. Gemmes : technique sombre→clair→point blanc."},
+  {n:"Saim-Hann (rouge)",t:{p:"#9a1115",s:"#f4f5f1",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Armure / châssis"],["Lavis","Carroburg Crimson","Armure — creux"],["Couche","Evil Sunz Scarlet","Armure (relevé)"],["Éclairci","Wild Rider Red","Arêtes de l'armure"]],no:"Coureurs de vent : rouge vif et blanc. Idéal sur jetbikes."},
+  {n:"Iyanden (jaune & bleu)",t:{p:"#e0a51f",s:"#16335f",tr:"#15151a"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Averland Sunset","Armure"],["Lavis","Casandora Yellow","Armure — creux"],["Couche","Yriel Yellow","Armure (relevé)"],["Éclairci","Flash Gitz Yellow","Arêtes de l'armure"]],no:"Vaisseau-monde mourant : jaune avec contraste bleu (Kantor Blue) sur certaines plaques."},
+  {n:"Biel-Tan (vert & blanc)",t:{p:"#1f8a3b",s:"#f4f5f1",tr:"#e0a51f"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Warpstone Glow","Armure"],["Lavis","Biel-Tan Green","Armure — creux"],["Couche","Moot Green","Armure (relevé)"],["Couche","Celestra Grey","Casque & plastron (blanc)"],["Éclairci","White Scar","Casque (arêtes)"]],no:"Vert émeraude + casques blancs. Le plus militariste des Vaisseaux-Mondes."},
+  {n:"Alaitoc (bleu sombre)",t:{p:"#16335f",s:"#f4f5f1",tr:"#e0a51f"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Kantor Blue","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Alaitoc Blue","Armure (relevé)"],["Éclairci","Hoeth Blue","Arêtes de l'armure"]],no:"Bleu nuit des rôdeurs. Casques os ou blancs en contraste."}
+ ]},
+{id:"drukhari",al:"xenos",name:"Drukhari — Eldars Noirs",
+ blurb:"Pirates sadiques de la cité-ombre de Commorragh. Armures sombres et lames cruelles.",
+ schemes:[
+  {n:"Kabale du Cœur Noir",t:{p:"#16414a",s:"#15151a",tr:"#1f8a3b"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Stegadon Scale Green","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Éclairci","Sotek Green","Arêtes de l'armure"],["Couche","Temple Guard Blue","Lames & armes (poison)"]],no:"Armure bleu-vert sombre métallisée. Lames empoisonnées turquoise, peau pâle Rakarth Flesh."},
+  {n:"Kabale du Crâne Écorché",t:{p:"#6c7077",s:"#9a1115",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Métal","Leadbelcher","Armure (métal)"],["Lavis","Drakenhof Nightshade","Armure — creux bleutés"],["Éclairci","Stormhost Silver","Arêtes de l'armure"],["Couche","Thousand Sons Blue","Voiles & tissus"]],no:"Armure métal froid à reflets bleus, voiles rouge sang. Très brillant et cruel."}
+ ]},
+{id:"tau",al:"xenos",name:"T'au Empire",
+ blurb:"Jeune empire technologique au credo du « Bien Suprême ». Armures de combat lisses, larges aplats.",
+ schemes:[
+  {n:"T'au Sept (ocre & blanc)",t:{p:"#7a5a2a",s:"#f4f5f1",tr:"#9a1115"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","XV-88","Armure (ocre)"],["Lavis","Agrax Earthshade","Armure — creux"],["Couche","XV-88","Armure (relevé)"],["Éclairci","Zamesi Desert","Arêtes de l'armure"],["Couche","Celestra Grey","Plaques blanches & casque"]],no:"Armure ocre + plaques blanches (Celestra Grey→White Scar) + capteurs rouges. Métal : Leadbelcher."},
+  {n:"Farsight Enclaves (rouge)",t:{p:"#9a1115",s:"#15151a",tr:"#e0a51f"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Armure"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Evil Sunz Scarlet","Armure (relevé)"],["Éclairci","Wild Rider Red","Arêtes de l'armure"]],no:"Dissidents de Farsight : rouge agressif, optiques jaunes ou vertes lumineuses."},
+  {n:"Vior'la (blanc & rouge)",t:{p:"#f4f5f1",s:"#9a1115",tr:"#15151a"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Celestra Grey","Armure (blanc cassé)"],["Lavis","Apothecary White","Creux & lignes uniquement"],["Couche","Ulthuan Grey","Armure (relevé)"],["Éclairci","White Scar","Arêtes de l'armure"],["Base","Mephiston Red","Plaques rouges & capteurs"]],no:"Sept « sang chaud » : armure blanche éclatante, plaques rouges. Blanc = gris clair monté au White Scar."},
+  {n:"Bork'an (gris pâle & bleu)",t:{p:"#b6bab8",s:"#16335f",tr:"#15151a"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Administratum Grey","Armure (gris pâle)"],["Lavis","Nuln Oil","Armure — creux"],["Couche","Administratum Grey","Armure (relevé)"],["Éclairci","White Scar","Arêtes de l'armure"],["Base","Macragge Blue","Plaques bleues"]],no:"Sept des chercheurs : gris clair sobre à plaques bleu profond. Optiques rouges ou vertes."}
+ ]},
+{id:"tyranids",al:"xenos",name:"Tyranids",
+ blurb:"Essaim dévoreur de mondes. Schéma typique : carapace d'une couleur, chair d'une autre. Chaque Flotte-Ruche a sa combinaison.",
+ schemes:[
+  {n:"Hive Fleet Leviathan",t:{p:"#cfc28b",s:"#5b2e72",tr:"#9a1115"},st:[["Sous-couche","Wraithbone","Toute la figurine"],["Base","Screaming Skull","Carapace (os)"],["Couche","White Scar","Carapace — arêtes"],["Base","Naggaroth Night","Chair / peau"],["Lavis","Druchii Violet","Chair — creux"],["Couche","Xereus Purple","Chair (relevé)"]],no:"Carapace os crème, chair violette. Griffes os, plaies rouges. Le schéma de boîte le plus connu."},
+  {n:"Hive Fleet Behemoth",t:{p:"#9a1115",s:"#cfc28b",tr:"#15151a"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Mephiston Red","Chair / peau (rouge)"],["Lavis","Nuln Oil","Chair — creux"],["Couche","Evil Sunz Scarlet","Chair (relevé)"],["Base","Zandri Dust","Carapace (os)"],["Couche","Screaming Skull","Carapace (éclairci)"]],no:"Chair rouge sang, carapace os. Premier grand schéma Tyranide historique."},
+  {n:"Hive Fleet Kraken",t:{p:"#5b2e72",s:"#0e6e8c",tr:"#cfc28b"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Naggaroth Night","Chair / peau"],["Lavis","Druchii Violet","Chair — creux"],["Couche","Xereus Purple","Chair (relevé)"],["Base","Thousand Sons Blue","Carapace"],["Couche","Temple Guard Blue","Carapace (éclairci)"]],no:"Chair violet foncé, carapace bleu-turquoise. Contraste froid et venimeux."}
+ ]},
+{id:"gsc",al:"xenos",name:"Genestealer Cults",
+ blurb:"Cultes hybrides infiltrant les mondes impériaux, mêlant Tyranides et populace ouvrière.",
+ schemes:[
+  {n:"Culte de la 4e Génération",t:{p:"#16414a",s:"#9a1115",tr:"#c07a52"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Stegadon Scale Green","Combinaisons de mineur"],["Lavis","Nuln Oil","Combinaisons — creux"],["Éclairci","Sotek Green","Combinaisons — reliefs"],["Base","Bugman's Glow","Peau (têtes hybrides)"],["Couche","Kislev Flesh","Peau — éclairci"]],no:"Combinaisons de mineurs bleu-vert, peau hybride bleutée, capuches rouges."}
+ ]},
+{id:"votann",al:"xenos",name:"Leagues of Votann",
+ blurb:"Descendants ancestraux trapus (les « Squats »), mineurs et marchands de l'espace profond.",
+ schemes:[
+  {n:"Greater Thurian League",t:{p:"#e0a51f",s:"#6c7077",tr:"#9a1115"},st:[["Sous-couche","Chaos Black","Toute la figurine"],["Base","Averland Sunset","Combinaisons (jaune)"],["Lavis","Casandora Yellow","Combinaisons — creux"],["Couche","Yriel Yellow","Combinaisons (relevé)"],["Métal","Leadbelcher","Armure, casque & armes"],["Lavis","Nuln Oil","Métal — creux"]],no:"Combinaisons jaunes type ouvrier industriel + armure métallique. Barbes et peau variées."}
+ ]},
+{id:"harlequins",al:"xenos",name:"Harlequins",
+ blurb:"Troubadours-guerriers Aeldari du Rire Sombre. Costumes bariolés et losanges multicolores.",
+ schemes:[
+  {n:"Troupe arlequine (diamants)",t:{p:"#1f6fb0",s:"#e0a51f",tr:"#9a1115"},st:[["Sous-couche","Grey Seer","Toute la figurine"],["Base","Teclis Blue","Losanges bleus"],["Couche","Lothern Blue","Losanges bleus — éclairci"],["Base","Mephiston Red","Losanges rouges"],["Base","Flash Gitz Yellow","Losanges jaunes"],["Métal","Retributor Armour","Ornements & armes (or)"]],no:"Pas de schéma unique : losanges contrastés à main levée. Masques blancs nacrés, armes lumineuses."}
+ ]}
+];
+const AL_LABEL={imperium:"Imperium",chaos:"Chaos",xenos:"Xenos"};
+const AL_COLOR={imperium:"var(--imp)",chaos:"var(--cha)",xenos:"var(--xen)"};
+const TYPE_ORDER=["Bombe","Base","Lavis","Couche","Sec","Contrast","Métal","Technique"];
+let state={tab:'home',al:'all',q:'',brand:'cit'};
+let cart=[];
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function pe(name){return P[name]||{h:"#555",t:"?",a:"—"};}
+function keyFor(fid,idx){return fid+"::"+idx;}
+
+const views={home:document.getElementById('view-home'),schemes:document.getElementById('view-schemes'),list:document.getElementById('view-list')};
+function setTab(t){
+  state.tab=t;
+  document.querySelectorAll('.navitem').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  Object.entries(views).forEach(([k,v])=>v.classList.toggle('on',k===t));
+  if(t==='schemes')renderSchemes();
+  if(t==='list')renderList();
+  window.scrollTo({top:0,behavior:'auto'});
+}
+document.getElementById('nav').addEventListener('click',e=>{const b=e.target.closest('.navitem');if(b)setTab(b.dataset.tab);});
+document.getElementById('entries').addEventListener('click',e=>{
+  const en=e.target.closest('.entry');if(!en)return;
+  state.al=en.dataset.al;
+  document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.al===state.al));
+  setTab('schemes');
+});
+document.getElementById('brand').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  state.brand=b.dataset.b;
+  document.querySelectorAll('#brand button').forEach(x=>x.classList.toggle('on',x===b));
+  document.body.classList.toggle('brand-ap',state.brand==='ap');
+  document.body.classList.toggle('brand-cit',state.brand==='cit');
+});
+
+const content=document.getElementById('content'),qInput=document.getElementById('q'),countEl=document.getElementById('count');
+function schemeMatches(fac,sc,q){
+  if(!q)return true;
+  const hay=[fac.name,sc.n,...sc.st.map(s=>s[1]),...sc.st.map(s=>s[2]||""),...sc.st.map(s=>(P[s[1]]||{}).a||"")].join(" ").toLowerCase();
+  return hay.includes(q);
+}
+function renderSchemes(){
+  const q=state.q.trim().toLowerCase();
+  const factions=DATA.filter(f=>state.al==='all'||f.al===state.al);
+  let html='',shown=0,facShown=0;
+  factions.forEach(f=>{
+    const schemes=f.schemes.map((sc,i)=>({sc,i})).filter(o=>schemeMatches(f,o.sc,q));
+    if(!schemes.length)return;
+    facShown++;shown+=schemes.length;
+    let cards='';
+    schemes.forEach(({sc,i})=>{
+      const k=keyFor(f.id,i),inCart=cart.some(c=>c.key===k);
+      let strip='';sc.st.forEach(s=>{strip+=`<div class="swatch" style="background:${pe(s[1]).h}"><span>${esc(s[0])}</span></div>`;});
+      let rows='';sc.st.forEach(s=>{const p=pe(s[1]);const zone=s[2]||"";rows+=`<tr><td class="r-chip"><i style="background:${p.h}"></i></td><td class="r-role">${esc(s[0])}</td><td><span class="r-paint r-paint--cit">${esc(s[1])}</span><span class="r-paint r-paint--ap">${esc(p.a)}</span> <span class="r-type">· ${esc(p.t)}</span>${zone?`<span class="r-zone"><b>&#9656;</b> ${esc(zone)}</span>`:''}<div class="r-alt r-paint--cit">≈ AP ${esc(p.a)}</div><div class="r-alt r-paint--ap">Citadel ${esc(s[1])}</div></td></tr>`;});
+      cards+=`<div class="card"><h4>${esc(sc.n)}<button class="addbtn ${inCart?'in':''}" data-add="${esc(k)}">${inCart?'✓ Ajouté':'+ Liste'}</button></h4><div class="tags"><span class="tag"><span class="dot" style="background:${sc.t.p}"></span>Principale</span><span class="tag"><span class="dot" style="background:${sc.t.s}"></span>Secondaire</span><span class="tag"><span class="dot" style="background:${sc.t.tr}"></span>Liseré</span></div><div class="strip">${strip}</div><table class="recipe">${rows}</table>${sc.no?`<p class="note">${sc.no}</p>`:''}</div>`;
+    });
+    html+=`<section class="faction" data-al="${f.al}" id="${f.id}"><div class="faction-head"><span class="mk"></span><h2>${esc(f.name)}</h2><span class="al">${AL_LABEL[f.al]} · ${schemes.length} schéma${schemes.length>1?'s':''}</span></div><p class="faction-blurb">${esc(f.blurb)}</p><div class="grid">${cards}</div></section>`;
+  });
+  content.innerHTML=html||`<div class="empty">Aucun résultat — essaie un autre terme ou réinitialise le filtre.</div>`;
+  countEl.textContent=`${facShown} faction${facShown>1?'s':''} · ${shown} schéma${shown>1?'s':''}`;
+}
+qInput.addEventListener('input',e=>{state.q=e.target.value;renderSchemes();});
+document.getElementById('chips').addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(!c)return;
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+  state.al=c.dataset.al;renderSchemes();
+});
+content.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(!b)return;toggleCart(b.dataset.add);renderSchemes();});
+
+function toggleCart(key){
+  const idx=cart.findIndex(c=>c.key===key);
+  if(idx>=0){cart.splice(idx,1);}
+  else{const parts=key.split('::');const f=DATA.find(x=>x.id===parts[0]);const sc=f.schemes[+parts[1]];
+    cart.push({key,faction:f.name.split('—')[0].trim(),scheme:sc.n,al:f.al,stages:sc.st});}
+  updateBadge();
+}
+function updateBadge(){const el=document.getElementById('listBadge');el.textContent=cart.length;el.classList.toggle('empty',cart.length===0);}
+function renderList(){
+  const sub=document.getElementById('printSub'),sel=document.getElementById('selSchemes'),shop=document.getElementById('shop');
+  if(!cart.length){
+    sel.innerHTML='';
+    shop.innerHTML=`<div class="list-empty"><div class="big">Ta liste est vide</div><div>Onglet <b>Schémas</b> → bouton <b>+ Liste</b> sur les schémas à peindre. Les peintures s'accumulent ici, dédoublonnées.</div><button class="act gold" id="goSchemes">Parcourir les schémas</button></div>`;
+    document.getElementById('listActions').style.display='none';
+    const g=document.getElementById('goSchemes');if(g)g.onclick=()=>setTab('schemes');
+    return;
+  }
+  document.getElementById('listActions').style.display='flex';
+  sub.textContent=cart.map(c=>c.faction+" — "+c.scheme).join(" · ");
+  sel.innerHTML=cart.map(c=>`<span class="pill"><span class="al" style="background:${AL_COLOR[c.al]}"></span><span><b>${esc(c.faction)}</b> · ${esc(c.scheme)}</span><button class="x" data-rm="${esc(c.key)}" aria-label="Retirer">×</button></span>`).join('');
+  sel.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{toggleCart(b.dataset.rm);renderList();renderSchemes();});
+  const map=new Map();
+  cart.forEach(c=>{const seen=new Set();c.stages.forEach(s=>{const name=s[1];if(seen.has(name))return;seen.add(name);if(!map.has(name))map.set(name,{count:0,zones:new Set()});const e=map.get(name);e.count++;if(s[2])e.zones.add(s[2]);});});
+  const byType={};[...map.entries()].forEach(([name,info])=>{const t=pe(name).t;(byType[t]=byType[t]||[]).push({name,info});});
+  const total=map.size;
+  let html=`<p class="count">${total} peinture${total>1?'s':''} unique${total>1?'s':''} · ${cart.length} schéma${cart.length>1?'s':''}</p>`;
+  TYPE_ORDER.forEach(t=>{
+    if(!byType[t])return;
+    const rows=byType[t].sort((a,b)=>a.name.localeCompare(b.name)).map(({name,info})=>{const p=pe(name);return `<div class="shop-row"><label class="cb"><input type="checkbox"></label><span class="sw" style="background:${p.h}"></span><span class="nm"><span class="cit">${esc(name)}</span><span class="ap">≈ AP ${esc(p.a)}</span></span><span class="ct">${info.count>1?('×'+info.count):''}</span></div>`;}).join('');
+    html+=`<div class="ptype"><h3>${esc(t)} <span class="c">(${byType[t].length})</span></h3>${rows}</div>`;
+  });
+  shop.innerHTML=html;
+  shop.querySelectorAll('.shop-row input').forEach(cb=>cb.onchange=()=>cb.closest('.shop-row').classList.toggle('done',cb.checked));
+}
+document.getElementById('clearList').onclick=()=>{if(cart.length&&confirm('Vider toute la liste de courses ?')){cart=[];updateBadge();renderList();renderSchemes();}};
+document.getElementById('printList').onclick=()=>window.print();
+
+document.getElementById('stFac').textContent=DATA.length;
+document.getElementById('stSch').textContent=DATA.reduce((a,f)=>a+f.schemes.length,0);
+document.getElementById('stPai').textContent=Object.keys(P).length;
+updateBadge();
+</script>
+</body>
+</html>
