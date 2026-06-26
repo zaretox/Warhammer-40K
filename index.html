@@ -204,6 +204,72 @@
   .atelier-io{display:flex;gap:8px;margin-bottom:8px}
   .atelier-io .act{flex:1}
   .io-hint{margin:0 0 16px;font-size:11.5px;color:var(--mute);font-family:'Space Mono';letter-spacing:.02em;line-height:1.5}
+  /* ---- Points : calculateur V10/V11 ---- */
+  .points-wrap{padding:18px 16px 0}
+  .points-intro{border:1px solid var(--line2);border-left:3px solid var(--gold);background:rgba(198,161,78,.06);border-radius:10px;padding:13px 14px;margin-bottom:16px;font-size:12.5px;color:var(--bone-dim);line-height:1.55}
+  .points-intro b{color:var(--bone)}
+  .points-intro a{color:var(--gold)}
+  .pt-controls{display:flex;gap:8px;margin-bottom:12px}
+  .pt-controls select,.pt-controls input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line2);border-radius:8px;color:var(--bone);font-family:'Inter';font-size:16px;padding:9px 11px;outline:none}
+  .pt-head{display:grid;grid-template-columns:1fr 44px 50px 50px;gap:8px;font-family:'Space Mono';font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);padding:0 4px 6px}
+  .pt-head span:not(:first-child){text-align:center}
+  .pt-row{border:1px solid var(--line);border-radius:9px;background:var(--ink2);padding:10px;margin-bottom:9px}
+  .pt-top{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+  .pt-unit{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line2);border-radius:7px;color:var(--bone);font-size:16px;padding:8px 10px;outline:none}
+  .pt-unit:focus{border-color:var(--gold-dim)}
+  .pt-del{flex:none;width:32px;height:34px;border-radius:7px;border:1px solid var(--line2);background:var(--panel);color:var(--bone-dim);font-size:16px;cursor:pointer}
+  .pt-del:active{background:var(--cha);color:#fff}
+  .pt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .pt-cell{display:flex;flex-direction:column;gap:3px}
+  .pt-cell label{font-family:'Space Mono';font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-align:center}
+  .pt-cell input{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:7px;color:var(--bone);font-size:16px;padding:8px;text-align:center;outline:none}
+  .pt-cell input:focus{border-color:var(--gold-dim)}
+  .pt-calc{margin-top:8px;text-align:right;font-family:'Space Mono';font-size:11px;color:var(--bone-dim)}
+  .pt-calc b{color:var(--bone)}
+  .delta.up{color:var(--cha)}
+  .delta.down{color:#3fae6a}
+  .pt-total{border:1px solid var(--gold-dim);border-radius:10px;background:rgba(198,161,78,.05);padding:12px 14px;margin-bottom:12px}
+  .pt-trow{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:14px;color:var(--bone-dim)}
+  .pt-trow b{color:var(--bone);font-family:'Space Mono'}
+  .pt-trow.big{border-top:1px solid var(--line);margin-top:4px;padding-top:8px;font-size:15px}
+  .pt-trow.big b{font-size:16px}
+  .pt-lim{margin-top:8px;font-size:12.5px;color:var(--bone-dim);font-family:'Space Mono'}
+  .pt-lim.over{color:var(--cha)}
+  .pt-lim b{color:var(--bone)}
+  .pt-actions{display:flex;gap:8px;margin-bottom:8px}
+  .pt-actions .act{flex:1}
+  /* ---- Teintes : correspondance couleur ---- */
+  .col-wrap{padding:18px 16px 0}
+  .col-pick{display:flex;gap:8px;margin-bottom:10px}
+  .col-pick input[type=color]{flex:none;width:56px;height:48px;padding:3px;border:1px solid var(--line2);border-radius:9px;background:var(--panel);cursor:pointer}
+  .col-pick .hexin{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line2);border-radius:9px;color:var(--bone);font-family:'Space Mono';font-size:16px;padding:10px 12px;outline:none;text-transform:uppercase}
+  .col-pick .hexin:focus{border-color:var(--gold-dim)}
+  .col-from{margin-bottom:12px}
+  .col-from input{width:100%;background:var(--panel);border:1px solid var(--line2);border-radius:9px;color:var(--bone);font-size:16px;padding:9px 12px;outline:none}
+  .col-from input:focus{border-color:var(--gold-dim)}
+  .col-src{display:flex;gap:12px;align-items:center;border:1px solid var(--line2);border-radius:10px;padding:12px;margin-bottom:16px;background:var(--ink2)}
+  .col-src .sw{width:56px;height:56px;border-radius:9px;flex:none;border:1px solid rgba(255,255,255,.2)}
+  .col-src .meta{min-width:0}
+  .col-src .meta .hx{font-family:'Space Mono';font-size:14px;color:var(--bone);text-transform:uppercase}
+  .col-src .meta .ds{font-size:13.5px;color:var(--bone-dim);margin-top:4px}
+  .col-chips{display:flex;gap:8px;margin-bottom:14px}
+  .col-chips .chip{flex:1;text-align:center}
+  .cr{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid var(--line)}
+  .cr .sw{width:36px;height:36px;border-radius:7px;flex:none;border:1px solid rgba(255,255,255,.2)}
+  .cr .nm{flex:1;min-width:0}
+  .cr .nm .t1{color:var(--bone);font-weight:500;font-size:14px}
+  .cr .nm .t2{font-family:'Space Mono';font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:.02em}
+  .cr .pc{flex:none;text-align:right}
+  .cr .pc .v{font-family:'Oswald';font-size:18px;font-weight:600;color:var(--gold);line-height:1}
+  .cr .pc .h{font-family:'Space Mono';font-size:8px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+  .cr.best{background:rgba(198,161,78,.07);border-radius:8px;border-bottom-color:transparent;padding-left:8px;padding-right:8px}
+  .col-triad{display:flex;gap:8px;margin-bottom:18px}
+  .tri{flex:1;min-width:0;border:1px solid var(--line2);border-radius:9px;padding:8px;background:var(--ink2);text-align:center}
+  .tri .sw{display:block;width:100%;height:40px;border-radius:6px;border:1px solid rgba(255,255,255,.18)}
+  .tri .tl{font-family:'Oswald';text-transform:uppercase;letter-spacing:.04em;font-size:11px;color:var(--gold);margin-top:7px}
+  .tri .thx{font-family:'Space Mono';font-size:9px;color:var(--mute);margin-top:1px}
+  .tri .tm{font-size:11px;color:var(--bone);margin-top:5px;line-height:1.25;word-break:break-word}
+  .tri .tp{font-family:'Space Mono';font-size:10px;color:var(--bone-dim);margin-top:2px}
   .notice{border:1px solid var(--line2);border-left:3px solid var(--gold);background:rgba(198,161,78,.06);
     border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--bone-dim);margin-bottom:16px}
   .notice b{color:var(--gold)}
@@ -241,10 +307,10 @@
   .bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:60;
     display:flex;background:rgba(13,13,16,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);
     padding-bottom:var(--safe-b)}
-  .navitem{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 7px;
+  .navitem{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 2px 7px;
     background:none;border:none;cursor:pointer;color:var(--bone-dim);transition:.12s;position:relative;min-height:var(--nav)}
-  .navitem svg{width:23px;height:23px}
-  .navitem span{font-family:'Oswald';text-transform:uppercase;letter-spacing:.05em;font-size:10px}
+  .navitem svg{width:21px;height:21px}
+  .navitem span{font-family:'Oswald';text-transform:uppercase;letter-spacing:.03em;font-size:9.5px}
   .navitem.on{color:var(--gold)}
   .navitem.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:30px;height:2px;background:var(--gold);border-radius:2px}
   .navitem .nbadge{position:absolute;top:5px;right:50%;margin-right:-22px;background:var(--gold);color:#1c1709;
@@ -369,10 +435,20 @@
     </div>
   </section>
 
+  <section class="view" id="view-points">
+    <div class="points-wrap pad-bottom"><div id="pointsBody"></div></div>
+  </section>
+
+  <section class="view" id="view-colors">
+    <div class="col-wrap pad-bottom"><div id="colorsBody"></div></div>
+  </section>
+
   <nav class="bottomnav" id="nav">
     <button class="navitem on" data-tab="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg><span>Accueil</span></button>
     <button class="navitem" data-tab="schemes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg><span>Schémas</span></button>
     <button class="navitem" data-tab="atelier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 1.5-1.9-.5-1 .4-2.1 1.5-2.1H18a3 3 0 0 0 3-3c0-5-4-9-9-9Z"/><circle cx="7.5" cy="11" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="11" r="1.1"/></svg><span>Atelier</span></button>
+    <button class="navitem" data-tab="points"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18h4"/></svg><span>Points</span></button>
+    <button class="navitem" data-tab="colors"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.6 6 10.5a6 6 0 0 1-12 0C6 9.6 12 3 12 3Z"/></svg><span>Teintes</span></button>
     <button class="navitem" data-tab="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1.3"/><circle cx="3.5" cy="12" r="1.3"/><circle cx="3.5" cy="18" r="1.3"/></svg><span>Liste</span><span class="nbadge empty" id="listBadge">0</span></button>
   </nav>
 
@@ -476,7 +552,319 @@ const P = {
   "Typhus Corrosion":{h:"#28231d",t:"Technique",a:"—"},
   "Ryza Rust":{h:"#b5611f",t:"Technique",a:"—"},
   "Nihilakh Oxide":{h:"#62b8a6",t:"Technique",a:"—"},
-  "Aethermatic Blue":{h:"#3aa6c4",t:"Technique",a:"Speedpaint Cloudburst Blue"}
+  "Aethermatic Blue":{h:"#3aa6c4",t:"Technique",a:"Speedpaint Cloudburst Blue"},
+  "Abaddon Black":{h:"#231f20",t:"Base",a:"—"},
+  "Ceramite White":{h:"#ffffff",t:"Base",a:"—"},
+  "Daemonette Hide":{h:"#696684",t:"Base",a:"—"},
+  "Deathworld Forest":{h:"#5c6730",t:"Base",a:"—"},
+  "Dryad Bark":{h:"#33312d",t:"Base",a:"—"},
+  "Incubi Darkness":{h:"#0b474a",t:"Base",a:"—"},
+  "Jokaero Orange":{h:"#ee3823",t:"Base",a:"—"},
+  "Ratskin Flesh":{h:"#ad6b4c",t:"Base",a:"—"},
+  "Screamer Pink":{h:"#7c1645",t:"Base",a:"—"},
+  "Screaming Bell":{h:"#c16f45",t:"Métal",a:"—"},
+  "Warplock Bronze":{h:"#927d7b",t:"Métal",a:"—"},
+  "Ahriman Blue":{h:"#1f8c9c",t:"Couche",a:"—"},
+  "Bestigor Flesh":{h:"#d38a57",t:"Couche",a:"—"},
+  "Brass Scorpion":{h:"#b7885f",t:"Métal",a:"—"},
+  "Dark Reaper":{h:"#3b5150",t:"Couche",a:"—"},
+  "Deathclaw Brown":{h:"#b36853",t:"Couche",a:"—"},
+  "Doombull Brown":{h:"#5d0009",t:"Couche",a:"—"},
+  "Emperors Children":{h:"#b94278",t:"Couche",a:"—"},
+  "Fire Dragon Bright":{h:"#f58652",t:"Couche",a:"—"},
+  "Flayed One Flesh":{h:"#f0d9b8",t:"Couche",a:"—"},
+  "Fulgurite Copper":{h:"#c98a5a",t:"Métal",a:"—"},
+  "Gehenna's Gold":{h:"#dba674",t:"Métal",a:"—"},
+  "Genestealer Purple":{h:"#7761ab",t:"Couche",a:"—"},
+  "Hashut Copper":{h:"#b77647",t:"Métal",a:"—"},
+  "Kabalite Green":{h:"#038c67",t:"Couche",a:"—"},
+  "Karak Stone":{h:"#bb9662",t:"Couche",a:"—"},
+  "Loren Forest":{h:"#50702d",t:"Couche",a:"—"},
+  "Ogryn Camo":{h:"#9da94b",t:"Couche",a:"—"},
+  "Pallid Wych Flesh":{h:"#cdcebe",t:"Couche",a:"—"},
+  "Pink Horror":{h:"#90305d",t:"Couche",a:"—"},
+  "Runelord Brass":{h:"#b6a89a",t:"Métal",a:"—"},
+  "Skrag Brown":{h:"#90490f",t:"Couche",a:"—"},
+  "Slaanesh Grey":{h:"#8e8c97",t:"Couche",a:"—"},
+  "Stormvermin Fur":{h:"#736b65",t:"Couche",a:"—"},
+  "Straken Green":{h:"#628126",t:"Couche",a:"—"},
+  "Sybarite Green":{h:"#30a56c",t:"Couche",a:"—"},
+  "Tallarn Sand":{h:"#a67610",t:"Couche",a:"—"},
+  "Tau Light Ochre":{h:"#bf6e1d",t:"Couche",a:"—"},
+  "Thunderhawk Blue":{h:"#417074",t:"Couche",a:"—"},
+  "Tuskgor Fur":{h:"#883636",t:"Couche",a:"—"},
+  "Ungor Flesh":{h:"#d6a766",t:"Couche",a:"—"},
+  "Warpfiend Grey":{h:"#6b6a74",t:"Couche",a:"—"},
+  "Coelia Greenshade":{h:"#0e7f78",t:"Lavis",a:"—"},
+  "Fuegan Orange":{h:"#c77e4d",t:"Lavis",a:"—"},
+  "Astorath Red":{h:"#dd482b",t:"Sec",a:"—"},
+  "Changeling Pink":{h:"#f4afcd",t:"Sec",a:"—"},
+  "Chronus Blue":{h:"#72a8d1",t:"Sec",a:"—"},
+  "Eldar Flesh":{h:"#ecc083",t:"Sec",a:"—"},
+  "Etherium Blue":{h:"#a2bad2",t:"Sec",a:"—"},
+  "Golden Griffon":{h:"#a99058",t:"Métal",a:"—"},
+  "Golgfag Brown":{h:"#c2804f",t:"Sec",a:"—"},
+  "Hellion Green":{h:"#84c3aa",t:"Sec",a:"—"},
+  "Hexos Palesun":{h:"#fff200",t:"Sec",a:"—"},
+  "Imrik Blue":{h:"#67aed0",t:"Sec",a:"—"},
+  "Kindleflame":{h:"#f79e86",t:"Sec",a:"—"},
+  "Longbeard Grey":{h:"#ceceaf",t:"Sec",a:"—"},
+  "Lucius Lilac":{h:"#b69fcc",t:"Sec",a:"—"},
+  "Praxeti White":{h:"#ffffff",t:"Sec",a:"—"},
+  "Sigmarite":{h:"#caad76",t:"Sec",a:"—"},
+  "Skink Blue":{h:"#58c1cd",t:"Sec",a:"—"},
+  "Stormfang":{h:"#80a7c1",t:"Sec",a:"—"},
+  "Sylvaneth Bark":{h:"#ac8262",t:"Sec",a:"—"},
+  "Terminatus Stone":{h:"#bdb192",t:"Sec",a:"—"},
+  "Tyrant Skull":{h:"#cdc586",t:"Sec",a:"—"},
+  "Underhive Ash":{h:"#c0bd81",t:"Sec",a:"—"},
+  "Verminlord Hide":{h:"#a16954",t:"Sec",a:"—"},
+  "Wrack White":{h:"#fcfbfa",t:"Sec",a:"—"},
+  "Baharroth Blue":{h:"#58c1cd",t:"Éclairci",a:"—"},
+  "Blue Horror":{h:"#a2bad2",t:"Éclairci",a:"—"},
+  "Dechala Lilac":{h:"#b69fcc",t:"Éclairci",a:"—"},
+  "Dorn Yellow":{h:"#fff200",t:"Éclairci",a:"—"},
+  "Fulgrim Pink":{h:"#f4afcd",t:"Éclairci",a:"—"},
+  "Gauss Blaster Green":{h:"#84c3aa",t:"Éclairci",a:"—"},
+  "Krieg Khaki":{h:"#c0bd81",t:"Éclairci",a:"—"},
+  "Lugganath Orange":{h:"#f79e86",t:"Éclairci",a:"—"},
+  "Bloodletter":{h:"#f37355",t:"Glacis",a:"—"},
+  "Guilliman Blue":{h:"#2f9ad6",t:"Glacis",a:"—"},
+  "Lamenters Yellow":{h:"#fff56b",t:"Glacis",a:"—"},
+  "Waywatcher Green":{h:"#6dc066",t:"Glacis",a:"—"},
+  "'Ardcoat":{h:"#e2dedf",t:"Technique",a:"—"},
+  "Lahmian Medium":{h:"#f5ede2",t:"Technique",a:"—"},
+  "Soulstone Blue":{h:"#004efa",t:"Technique",a:"—"},
+  "Spiritstone Red":{h:"#ff4b24",t:"Technique",a:"—"},
+  "Waystone Green":{h:"#00c000",t:"Technique",a:"—"},
+  "Stirland Mud":{h:"#492b00",t:"Texture",a:"—"},
+  "Astrogranite":{h:"#757679",t:"Texture",a:"—"},
+  "Blackfire Earth":{h:"#a75820",t:"Texture",a:"—"},
+  "Mourn Mountain Snow":{h:"#e9eaeb",t:"Texture",a:"—"},
+  "Armageddon Dust":{h:"#d3a907",t:"Texture",a:"—"},
+  "Blood Angels Red":{h:"#8a0f12",t:"Contrast",a:"—"},
+  "Flesh Tearers Red":{h:"#6e0d10",t:"Contrast",a:"—"},
+  "Dark Angels Green":{h:"#0f3b24",t:"Contrast",a:"—"},
+  "Ultramarines Blue":{h:"#18497f",t:"Contrast",a:"—"},
+  "Space Wolves Grey":{h:"#5f86a6",t:"Contrast",a:"—"},
+  "Iyanden Yellow":{h:"#e0a51f",t:"Contrast",a:"—"},
+  "Nazdreg Yellow":{h:"#e8a21a",t:"Contrast",a:"—"},
+  "Gryph-Hound Orange":{h:"#e06a22",t:"Contrast",a:"—"},
+  "Magmadroth Flame":{h:"#d8531f",t:"Contrast",a:"—"},
+  "Gore-Grunta Fur":{h:"#7a3b1f",t:"Contrast",a:"—"},
+  "Snakebite Leather":{h:"#8a5a1e",t:"Contrast",a:"—"},
+  "Cygor Brown":{h:"#5a3a22",t:"Contrast",a:"—"},
+  "Wyldwood":{h:"#2e2218",t:"Contrast",a:"—"},
+  "Basilicanum Grey":{h:"#3a3a3c",t:"Contrast",a:"—"},
+  "Gryph-Charger Grey":{h:"#6f8a8a",t:"Contrast",a:"—"},
+  "Akhelian Green":{h:"#0e6a63",t:"Contrast",a:"—"},
+  "Terradon Turquoise":{h:"#1f8c86",t:"Contrast",a:"—"},
+  "Militarum Green":{h:"#4a5a2a",t:"Contrast",a:"—"},
+  "Ork Flesh":{h:"#5a8a3a",t:"Contrast",a:"—"},
+  "Aggaros Dunes":{h:"#b89a5a",t:"Contrast",a:"—"},
+  "Guilliman Flesh":{h:"#c98a66",t:"Contrast",a:"—"},
+  "Darkoath Flesh":{h:"#b06a4a",t:"Contrast",a:"—"},
+  "Fyreslayer Flesh":{h:"#c0432a",t:"Contrast",a:"—"},
+  "Volupus Pink":{h:"#9a2a6a",t:"Contrast",a:"—"},
+  "Doomfire Magenta":{h:"#7a1f5a",t:"Contrast",a:"—"},
+  "Shyish Purple":{h:"#3a2150",t:"Contrast",a:"—"},
+  "Leviadon Blue":{h:"#1f3f6a",t:"Contrast",a:"—"},
+  "Pylar Glacier":{h:"#b9c9cf",t:"Contrast",a:"—"},
+  "Hexwraith Flame":{h:"#2fa05a",t:"Contrast",a:"—"},
+  "Creed Camo":{h:"#6a6a3a",t:"Contrast",a:"—"},
+  "Black Legion":{h:"#26282b",t:"Contrast",a:"—"},
+  "Plaguebearer Flesh":{h:"#9aa066",t:"Contrast",a:"—"},
+  "Matt Black (AP)":{h:"#1b1b1d",t:"Warpaints",a:"—"},
+  "Matt White (AP)":{h:"#f3f3ef",t:"Warpaints",a:"—"},
+  "Uniform Grey (AP)":{h:"#5a5e60",t:"Warpaints",a:"—"},
+  "Ash Grey (AP)":{h:"#b6b8b2",t:"Warpaints",a:"—"},
+  "Wolf Grey (AP)":{h:"#8f9aa0",t:"Warpaints",a:"—"},
+  "Ghost Grey (AP)":{h:"#c6d2cf",t:"Warpaints",a:"—"},
+  "Pure Red (AP)":{h:"#c2191f",t:"Warpaints",a:"—"},
+  "Dragon Red (AP)":{h:"#9a1418",t:"Warpaints",a:"—"},
+  "Mars Red (AP)":{h:"#6e1012",t:"Warpaints",a:"—"},
+  "Lava Orange (AP)":{h:"#e2541e",t:"Warpaints",a:"—"},
+  "Daemonic Yellow (AP)":{h:"#e6b21f",t:"Warpaints",a:"—"},
+  "Lightning Yellow (AP)":{h:"#f7e34a",t:"Warpaints",a:"—"},
+  "Greenskin (AP)":{h:"#3a8f3a",t:"Warpaints",a:"—"},
+  "Goblin Green (AP)":{h:"#56c14b",t:"Warpaints",a:"—"},
+  "Angel Green (AP)":{h:"#1f6e3a",t:"Warpaints",a:"—"},
+  "Army Green (AP)":{h:"#4f6b34",t:"Warpaints",a:"—"},
+  "Necrotic Flesh (AP)":{h:"#9aa066",t:"Warpaints",a:"—"},
+  "Hydra Turquoise (AP)":{h:"#0e7d8c",t:"Warpaints",a:"—"},
+  "Aquamarine (AP)":{h:"#3aa3a0",t:"Warpaints",a:"—"},
+  "Deep Blue (AP)":{h:"#16335f",t:"Warpaints",a:"—"},
+  "Ultramarine Blue (AP)":{h:"#1f56a7",t:"Warpaints",a:"—"},
+  "Crystal Blue (AP)":{h:"#3a7cc4",t:"Warpaints",a:"—"},
+  "Electric Blue (AP)":{h:"#2f8fd6",t:"Warpaints",a:"—"},
+  "Stormy Blue (AP)":{h:"#2f4d6b",t:"Warpaints",a:"—"},
+  "Barbarian Flesh (AP)":{h:"#c07a52",t:"Warpaints",a:"—"},
+  "Tanned Flesh (AP)":{h:"#9a5a45",t:"Warpaints",a:"—"},
+  "Skeleton Bone (AP)":{h:"#cfc28b",t:"Warpaints",a:"—"},
+  "Desert Yellow (AP)":{h:"#b0a063",t:"Warpaints",a:"—"},
+  "Leather Brown (AP)":{h:"#6e3b1f",t:"Warpaints",a:"—"},
+  "Oak Brown (AP)":{h:"#4a2f2a",t:"Warpaints",a:"—"},
+  "Dark Stone (AP)":{h:"#3c352f",t:"Warpaints",a:"—"},
+  "Alien Purple (AP)":{h:"#5b2e72",t:"Warpaints",a:"—"},
+  "Greedy Gold (AP)":{h:"#c79a45",t:"Métal",a:"—"},
+  "Bright Gold (AP)":{h:"#b08a2e",t:"Métal",a:"—"},
+  "Tainted Gold (AP)":{h:"#6e5320",t:"Métal",a:"—"},
+  "Weapon Bronze (AP)":{h:"#9a6a3a",t:"Métal",a:"—"},
+  "True Copper (AP)":{h:"#b5611f",t:"Métal",a:"—"},
+  "Rough Iron (AP)":{h:"#5a5e62",t:"Métal",a:"—"},
+  "Gun Metal (AP)":{h:"#6c7077",t:"Métal",a:"—"},
+  "Plate Mail Metal (AP)":{h:"#9aa0a6",t:"Métal",a:"—"},
+  "Shining Silver (AP)":{h:"#c4c9cd",t:"Métal",a:"—"},
+  "Mithril (AP)":{h:"#d6dadd",t:"Métal",a:"—"},
+  "Cobalt Metal (AP)":{h:"#3a5f8f",t:"Métal",a:"—"},
+  "Dark Emerald (AP)":{h:"#155a45",t:"Métal",a:"—"},
+  "Death Metal (AP)":{h:"#4a4d50",t:"Métal",a:"—"},
+  "Dark Tone (AP)":{h:"#1b1c1e",t:"Lavis",a:"—"},
+  "Strong Tone (AP)":{h:"#3a2c1e",t:"Lavis",a:"—"},
+  "Soft Tone (AP)":{h:"#6e4a18",t:"Lavis",a:"—"},
+  "Light Tone (AP)":{h:"#8a6a30",t:"Lavis",a:"—"},
+  "Sepia Tone (AP)":{h:"#6e4a18",t:"Lavis",a:"—"},
+  "Red Tone (AP)":{h:"#5a0f14",t:"Lavis",a:"—"},
+  "Green Tone (AP)":{h:"#163a2a",t:"Lavis",a:"—"},
+  "Blue Tone (AP)":{h:"#15233f",t:"Lavis",a:"—"},
+  "Purple Tone (AP)":{h:"#2c1538",t:"Lavis",a:"—"},
+  "Military Shader (AP)":{h:"#3f4a1f",t:"Lavis",a:"—"},
+  "Flesh Wash (AP)":{h:"#7a3320",t:"Lavis",a:"—"},
+  "Blood Splatter (AP)":{h:"#6e0d10",t:"Effet",a:"—"},
+  "Dark Blood (AP)":{h:"#4a0a0c",t:"Effet",a:"—"},
+  "Rust (AP)":{h:"#b5611f",t:"Effet",a:"—"},
+  "Dry Rust (AP)":{h:"#8a4a1f",t:"Effet",a:"—"},
+  "Verdigris (AP)":{h:"#3aa08a",t:"Effet",a:"—"},
+  "Green Slime (AP)":{h:"#4fae3a",t:"Effet",a:"—"},
+  "Plasma Glow (AP)":{h:"#3fd0e0",t:"Effet",a:"—"},
+  "Lens Flare (AP)":{h:"#f2d23a",t:"Effet",a:"—"},
+  "Radiation Glow (AP)":{h:"#7ae04a",t:"Effet",a:"—"},
+  "Grim Black (AP)":{h:"#1a1a1d",t:"Speedpaint",a:"—"},
+  "Holy White (AP)":{h:"#e9eae6",t:"Speedpaint",a:"—"},
+  "Pallid Bone (AP)":{h:"#cfc28b",t:"Speedpaint",a:"—"},
+  "Crusader Skin (AP)":{h:"#caa06a",t:"Speedpaint",a:"—"},
+  "Slaughter Red (AP)":{h:"#9a1418",t:"Speedpaint",a:"—"},
+  "Zealot Yellow (AP)":{h:"#e6b21f",t:"Speedpaint",a:"—"},
+  "Camo Cloak (AP)":{h:"#5a6a30",t:"Speedpaint",a:"—"},
+  "Cloudburst Blue (AP)":{h:"#3a86c4",t:"Speedpaint",a:"—"},
+  "Hive Dweller Purple (AP)":{h:"#5b2e72",t:"Speedpaint",a:"—"},
+  "Malignant Green (AP)":{h:"#3a9a5a",t:"Speedpaint",a:"—"},
+  "Gravelord Grey (AP)":{h:"#5a5e60",t:"Speedpaint",a:"—"},
+  "Hardened Leather (AP)":{h:"#6e4a2a",t:"Speedpaint",a:"—"},
+  "Air: Corax White":{h:"#eef0ec",t:"Air",a:"—"},
+  "Air: White Scar":{h:"#f4f5f1",t:"Air",a:"—"},
+  "Air: Macragge Blue":{h:"#14508f",t:"Air",a:"—"},
+  "Air: Altdorf Guard Blue":{h:"#1f5fa6",t:"Air",a:"—"},
+  "Air: Calgar Blue":{h:"#3a7cc4",t:"Air",a:"—"},
+  "Air: Kantor Blue":{h:"#16335f",t:"Air",a:"—"},
+  "Air: Alaitoc Blue":{h:"#4a6db0",t:"Air",a:"—"},
+  "Air: Hoeth Blue":{h:"#6f95cf",t:"Air",a:"—"},
+  "Air: Caledor Sky":{h:"#3f73b8",t:"Air",a:"—"},
+  "Air: Lothern Blue":{h:"#2f8fd6",t:"Air",a:"—"},
+  "Air: Teclis Blue":{h:"#1f7fd0",t:"Air",a:"—"},
+  "Air: The Fang":{h:"#2f4d6b",t:"Air",a:"—"},
+  "Air: Russ Grey":{h:"#5a7fa0",t:"Air",a:"—"},
+  "Air: Fenrisian Grey":{h:"#8fb0cf",t:"Air",a:"—"},
+  "Air: Thousand Sons Blue":{h:"#0e6e8c",t:"Air",a:"—"},
+  "Air: Temple Guard Blue":{h:"#3aa3a0",t:"Air",a:"—"},
+  "Air: Sotek Green":{h:"#0f7d7f",t:"Air",a:"—"},
+  "Air: Stegadon Scale Green":{h:"#16414a",t:"Air",a:"—"},
+  "Air: Mephiston Red":{h:"#9a1115",t:"Air",a:"—"},
+  "Air: Khorne Red":{h:"#6e1012",t:"Air",a:"—"},
+  "Air: Wazdakka Red":{h:"#8e1418",t:"Air",a:"—"},
+  "Air: Evil Sunz Scarlet":{h:"#c01516",t:"Air",a:"—"},
+  "Air: Wild Rider Red":{h:"#d83a23",t:"Air",a:"—"},
+  "Air: Squig Orange":{h:"#e0651f",t:"Air",a:"—"},
+  "Air: Troll Slayer Orange":{h:"#e2541e",t:"Air",a:"—"},
+  "Air: Retributor Armour":{h:"#b07a1e",t:"Air",a:"—"},
+  "Air: Auric Armour Gold":{h:"#c79a45",t:"Air",a:"—"},
+  "Air: Liberator Gold":{h:"#c79a45",t:"Air",a:"—"},
+  "Air: Balthasar Gold":{h:"#6e5320",t:"Air",a:"—"},
+  "Air: Sycorax Bronze":{h:"#b08a4a",t:"Air",a:"—"},
+  "Air: Leadbelcher":{h:"#6c7077",t:"Air",a:"—"},
+  "Air: Ironbreaker":{h:"#9aa0a6",t:"Air",a:"—"},
+  "Air: Stormhost Silver":{h:"#cfd4d8",t:"Air",a:"—"},
+  "Air: Runefang Steel":{h:"#c9ced2",t:"Air",a:"—"},
+  "Air: Caliban Green":{h:"#103a26",t:"Air",a:"—"},
+  "Air: Warpstone Glow":{h:"#1f8a3b",t:"Air",a:"—"},
+  "Air: Moot Green":{h:"#56c14b",t:"Air",a:"—"},
+  "Air: Warboss Green":{h:"#3a8f3a",t:"Air",a:"—"},
+  "Air: Death Guard Green":{h:"#9aa066",t:"Air",a:"—"},
+  "Air: Death World Forest":{h:"#4f6b34",t:"Air",a:"—"},
+  "Air: Castellan Green":{h:"#2f4424",t:"Air",a:"—"},
+  "Air: Elysian Green":{h:"#4a5b32",t:"Air",a:"—"},
+  "Air: Waaagh! Flesh":{h:"#1d5236",t:"Air",a:"—"},
+  "Air: Skarsnik Green":{h:"#4a9a6a",t:"Air",a:"—"},
+  "Air: Zandri Dust":{h:"#b0a063",t:"Air",a:"—"},
+  "Air: Ushabti Bone":{h:"#cfc28b",t:"Air",a:"—"},
+  "Air: Screaming Skull":{h:"#ddd9a3",t:"Air",a:"—"},
+  "Air: Rakarth Flesh":{h:"#b7b39b",t:"Air",a:"—"},
+  "Air: Steel Legion Drab":{h:"#6b5d3e",t:"Air",a:"—"},
+  "Air: Mournfang Brown":{h:"#6e3b1f",t:"Air",a:"—"},
+  "Air: XV-88":{h:"#7a5a2a",t:"Air",a:"—"},
+  "Air: Balor Brown":{h:"#9a6f2a",t:"Air",a:"—"},
+  "Air: Zamesi Desert":{h:"#c79a3a",t:"Air",a:"—"},
+  "Air: Rhinox Hide":{h:"#4a2f2a",t:"Air",a:"—"},
+  "Air: Gorthor Brown":{h:"#6a5240",t:"Air",a:"—"},
+  "Air: Baneblade Brown":{h:"#a48a5c",t:"Air",a:"—"},
+  "Air: Cadian Fleshtone":{h:"#c07a52",t:"Air",a:"—"},
+  "Air: Kislev Flesh":{h:"#e0a877",t:"Air",a:"—"},
+  "Air: Bugman's Glow":{h:"#9a5a45",t:"Air",a:"—"},
+  "Air: Averland Sunset":{h:"#e0a51f",t:"Air",a:"—"},
+  "Air: Yriel Yellow":{h:"#f2c41f",t:"Air",a:"—"},
+  "Air: Flash Gitz Yellow":{h:"#f7e34a",t:"Air",a:"—"},
+  "Air: Celestra Grey":{h:"#8fa1a3",t:"Air",a:"—"},
+  "Air: Ulthuan Grey":{h:"#c3d2cf",t:"Air",a:"—"},
+  "Air: Eshin Grey":{h:"#4a4d50",t:"Air",a:"—"},
+  "Air: Dawnstone":{h:"#8a8d8f",t:"Air",a:"—"},
+  "Air: Administratum Grey":{h:"#b6bab8",t:"Air",a:"—"},
+  "Air: Skavenblight Dinge":{h:"#3c352f",t:"Air",a:"—"},
+  "Air: Magos Purple":{h:"#5a2d63",t:"Air",a:"—"},
+  "Air: Naggaroth Night":{h:"#3a2a52",t:"Air",a:"—"},
+  "Air: Xereus Purple":{h:"#5b2e72",t:"Air",a:"—"},
+  "Air: Abaddon Black":{h:"#231f20",t:"Air",a:"—"},
+  "Air: Ceramite White":{h:"#ffffff",t:"Air",a:"—"},
+  "Air: Daemonette Hide":{h:"#696684",t:"Air",a:"—"},
+  "Air: Deathworld Forest":{h:"#5c6730",t:"Air",a:"—"},
+  "Air: Dryad Bark":{h:"#33312d",t:"Air",a:"—"},
+  "Air: Incubi Darkness":{h:"#0b474a",t:"Air",a:"—"},
+  "Air: Jokaero Orange":{h:"#ee3823",t:"Air",a:"—"},
+  "Air: Ratskin Flesh":{h:"#ad6b4c",t:"Air",a:"—"},
+  "Air: Screamer Pink":{h:"#7c1645",t:"Air",a:"—"},
+  "Air: Screaming Bell":{h:"#c16f45",t:"Air",a:"—"},
+  "Air: Warplock Bronze":{h:"#927d7b",t:"Air",a:"—"},
+  "Air: Ahriman Blue":{h:"#1f8c9c",t:"Air",a:"—"},
+  "Air: Bestigor Flesh":{h:"#d38a57",t:"Air",a:"—"},
+  "Air: Brass Scorpion":{h:"#b7885f",t:"Air",a:"—"},
+  "Air: Dark Reaper":{h:"#3b5150",t:"Air",a:"—"},
+  "Air: Deathclaw Brown":{h:"#b36853",t:"Air",a:"—"},
+  "Air: Doombull Brown":{h:"#5d0009",t:"Air",a:"—"},
+  "Air: Emperors Children":{h:"#b94278",t:"Air",a:"—"},
+  "Air: Fire Dragon Bright":{h:"#f58652",t:"Air",a:"—"},
+  "Air: Flayed One Flesh":{h:"#f0d9b8",t:"Air",a:"—"},
+  "Air: Fulgurite Copper":{h:"#c98a5a",t:"Air",a:"—"},
+  "Air: Gehenna's Gold":{h:"#dba674",t:"Air",a:"—"},
+  "Air: Genestealer Purple":{h:"#7761ab",t:"Air",a:"—"},
+  "Air: Hashut Copper":{h:"#b77647",t:"Air",a:"—"},
+  "Air: Kabalite Green":{h:"#038c67",t:"Air",a:"—"},
+  "Air: Karak Stone":{h:"#bb9662",t:"Air",a:"—"},
+  "Air: Loren Forest":{h:"#50702d",t:"Air",a:"—"},
+  "Air: Ogryn Camo":{h:"#9da94b",t:"Air",a:"—"},
+  "Air: Pallid Wych Flesh":{h:"#cdcebe",t:"Air",a:"—"},
+  "Air: Pink Horror":{h:"#90305d",t:"Air",a:"—"},
+  "Air: Runelord Brass":{h:"#b6a89a",t:"Air",a:"—"},
+  "Air: Skrag Brown":{h:"#90490f",t:"Air",a:"—"},
+  "Air: Slaanesh Grey":{h:"#8e8c97",t:"Air",a:"—"},
+  "Air: Stormvermin Fur":{h:"#736b65",t:"Air",a:"—"},
+  "Air: Straken Green":{h:"#628126",t:"Air",a:"—"},
+  "Air: Sybarite Green":{h:"#30a56c",t:"Air",a:"—"},
+  "Air: Tallarn Sand":{h:"#a67610",t:"Air",a:"—"},
+  "Air: Tau Light Ochre":{h:"#bf6e1d",t:"Air",a:"—"},
+  "Air: Thunderhawk Blue":{h:"#417074",t:"Air",a:"—"},
+  "Air: Tuskgor Fur":{h:"#883636",t:"Air",a:"—"},
+  "Air: Ungor Flesh":{h:"#d6a766",t:"Air",a:"—"},
+  "Air: Warpfiend Grey":{h:"#6b6a74",t:"Air",a:"—"},
+  "Air: Golden Griffon":{h:"#a99058",t:"Air",a:"—"}
 };
 const DATA = [
 {id:"space-marines",al:"imperium",name:"Adeptus Astartes — Space Marines",
@@ -672,7 +1060,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','
 function pe(name){return P[name]||{h:"#555",t:"?",a:"—"};}
 function keyFor(fid,idx){return fid+"::"+idx;}
 
-const views={home:document.getElementById('view-home'),schemes:document.getElementById('view-schemes'),list:document.getElementById('view-list'),atelier:document.getElementById('view-atelier')};
+const views={home:document.getElementById('view-home'),schemes:document.getElementById('view-schemes'),list:document.getElementById('view-list'),atelier:document.getElementById('view-atelier'),points:document.getElementById('view-points'),colors:document.getElementById('view-colors')};
 function setTab(t){
   state.tab=t;
   document.querySelectorAll('.navitem').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
@@ -680,6 +1068,8 @@ function setTab(t){
   if(t==='schemes')renderSchemes();
   if(t==='list')renderList();
   if(t==='atelier')renderAtelier();
+  if(t==='points')renderPoints();
+  if(t==='colors')renderColors();
   window.scrollTo({top:0,behavior:'auto'});
 }
 document.getElementById('nav').addEventListener('click',e=>{const b=e.target.closest('.navitem');if(b)setTab(b.dataset.tab);});
@@ -763,7 +1153,7 @@ function renderList(){
   const byType={};[...map.entries()].forEach(([name,info])=>{(byType[info.type]=byType[info.type]||[]).push({name,info});});
   const total=map.size;
   let html=`<p class="count">${total} peinture${total>1?'s':''} unique${total>1?'s':''} · ${cart.length} schéma${cart.length>1?'s':''}</p>`;
-  TYPE_ORDER.forEach(t=>{
+  TYPE_ORDER.concat(Object.keys(byType).filter(t=>TYPE_ORDER.indexOf(t)<0).sort()).forEach(t=>{
     if(!byType[t])return;
     const rows=byType[t].sort((a,b)=>a.name.localeCompare(b.name)).map(({name,info})=>`<div class="shop-row"><label class="cb"><input type="checkbox"></label><span class="sw" style="background:${info.hex}"></span><span class="nm"><span class="cit">${esc(name)}</span><span class="ap">≈ AP ${esc(info.ap)}</span></span><span class="ct">${info.count>1?('×'+info.count):''}</span></div>`).join('');
     html+=`<div class="ptype"><h3>${esc(t)} <span class="c">(${byType[t].length})</span></h3>${rows}</div>`;
@@ -909,7 +1299,170 @@ _edEl.addEventListener('click',e=>{
 _edEl.addEventListener('input',e=>{if(e.target.id==='ed-faction'){updateUnitList(e.target.value);return;}const p=e.target.closest('.st-paint');if(p&&P[p.value]){const row=p.closest('.steprow');const h=row.querySelector('.st-hex');if(h)h.value=P[p.value].h;}});
 (function(){const a=document.createElement('datalist');a.id='paintlist';a.innerHTML=Object.keys(P).map(n=>`<option value="${n.replace(/"/g,'&quot;')}"></option>`).join('');document.body.appendChild(a);
  const b=document.createElement('datalist');b.id='factionlist';b.innerHTML=[...new Set(DATA.map(f=>f.name.split('—')[0].trim()))].map(n=>`<option value="${esc(n)}"></option>`).join('');document.body.appendChild(b);
- const c=document.createElement('datalist');c.id='unitlist';document.body.appendChild(c);})();
+ const c=document.createElement('datalist');c.id='unitlist';document.body.appendChild(c);
+ const d=document.createElement('datalist');d.id='ptunitlist';document.body.appendChild(d);})();
+
+/* ===================== POINTS : calculateur V10/V11 ===================== */
+function unitsFor(name){const id=findFactionId(name);return (id&&UNITS[id])?UNITS[id]:GENERIC_UNITS;}
+/* Base Munitorum : V10 FR (27 factions) + V11 Necrons. Valeur = taille minimale. */
+const PTORDER=["adepta-sororitas","adeptus-custodes","adeptus-mechanicus","aeldari","agents","astra-militarum","black-templars","blood-angels","demons-chaos","chevaliers-chaos","csm","dark-angels","death-guard","deathwatch","drukhari","genestealers","grey-knights","chevaliers-imperiaux","votann","necrons","orks","space-marines","space-wolves","tau","thousand-sons","tyranides","world-eaters"];
+const PTSREF={
+"adepta-sororitas":{n:"Adepta Sororitas",u:[["Aestred Thurga et Agathae Dolan",70],["Arco-flagellants",45],["Assassins du Culte de la Mort",35],["Castigator",150],["Chanoinesse",60],["Croisés",20],["Célestes Sacro-saintes",65],["Dialogus",35],["Dogmata",50],["Démonifuge",80],["Escouade de Sœurs Novices",90],["Escouade de Sœurs de Bataille",110],["Escouade Dominion",130],["Escouade Repentia",75],["Escouade Retributor",130],["Escouade Séraphine",70],["Escouade Zéphyrine",70],["Exo-harnais Parangon",240],["Exorcist",140],["Hospitalière",40],["Imagifère",40],["Immolator",130],["Junith Eruita",100],["Machines de Pénitence",60],["Missionnaire",35],["Mortificatrices",60],["Morvenn Vahl",135],["Palatine",55],["Prêcheur",45],["Rhino Sororitas",80],["Sainte Célestine",150],["Triomphe de Sainte Katherine",150]]},
+"adeptus-custodes":{n:"Adeptus Custodes",u:[["Aleya",80],["Capitaine-Rempart",120],["Capitaine-Rempart en Armure Terminator Allarus",120],["Capitaine-Rempart sur Motojet Dawneagle",145],["Champion des Lames",100],["Chevalier-Centura",75],["Custodiens Allarus",130],["Dreadnought Contemptor Vénérable",185],["Gardes Custodiens",180],["Land Raider Vénérable",260],["Praetors Vertus",180],["Prosecutors",40],["Rhino Anathema Psykana",75],["Répurgatrices",60],["Trajann Valoris",145],["Valerian",115],["Veilleurs Custodiens",150],["Vigilators",60]]},
+"adeptus-mechanicus":{n:"Adeptus Mechanicus",u:[["Archéoptère Fusilave",160],["Archéoptère Stratoraptor",165],["Archéoptère Transvector",155],["Belisarius Cawl",185],["Brécheurs Kataphron",150],["Compilateur Cybernétique",35],["Corrôdeurs Sicariens",75],["Destructeurs Kataphron",120],["Dragons Sydoniens",75],["Désintégrateur Skorpius",195],["Électroprêtres Corpuscarii",65],["Électroprêtres Fulgurites",80],["Ferro-échassiers Ballistarii",50],["Glisseur Skorpius",80],["Hussards Serberys",75],["Infiltrateurs Sicariens",80],["Maréchal Skitarii",45],["Onagre des Dunes",140],["Patrouilleurs Skitarii",100],["Rangers Skitarii",125],["Robots Kastelan",215],["Servitors",50],["Soufredogues Serberys",65],["Stérilisateurs Pteraxii",75],["Technaugure",45],["Technoarchéologue",45],["Technoprêtre Dominus",75],["Technoprêtre Manipulus",60],["Vautours Pteraxii",70]]},
+"aeldari":{n:"Aeldari",u:[["Araignées Spectrales",100],["Arme d’Appui",85],["Asurmen",120],["Autarque",65],["Autarque Coureur Céleste",80],["Autarque Sautevoie",80],["Avatar de Khaine",295],["Baharroth",125],["Banshees Huantes",85],["Bouffon Tragique",70],["Chasseur Fantôme Conium",155],["Chasseur Écarlate",160],["Chevalier Fantôme",370],["Conclave de Psycharques",60],["Conclave de Psycharques Coureurs Célestes",100],["Corsaires Neantari",70],["Corsaires Neanti",90],["Coryphée",55],["Coureurs Mirages",80],["Dragons Flamboyants",85],["Eldrad Ulthran",100],["Faucheurs Noirs",75],["Faucon",140],["Fuegan",115],["Gardes Fantômes",155],["Gardiens Défenseurs",110],["Gardiens de Choc",115],["Gardiens du Vent",80],["Grand Prophète",65],["Grand Prophète Coureur Céleste",75],["Guerriers Fantômes",170],["Illic Nightspear",65],["Jain Zar",105],["Karandras",100],["Lances Étincelantes",120],["Marcheur de Guerre",95],["Maugan Ra",130],["Portail sur la Toile",220],["Prince Yriel",100],["Prisme de Feu",125],["Prophète de l’Ombre",60],["Psycharque",45],["Psycharque Coureur Céleste",55],["Rangers",55],["Scorpions Foudroyants",75],["Seigneur Fantôme",160],["Serpent Ondoyant",120],["Solitaire",115],["Spirite",65],["Tisseur Stellaire",80],["Tisseur de Nuit",140],["Tisseur du Néant",100],["Tisseurs Célestes",95],["Troupe",75],["Vengeurs Lugubres",70],["Le Visarque",90],["Vyper",75],["L’Yncarne",270],["Yvraine",100],["Éperviers Voltigeurs",75]]},
+"agents":{n:"Agents de l’Imperium",u:[["Assassin Callidus",115],["Assassin Culexus",85],["Assassin Eversor",75],["Assassin Vindicare",80],["Cosmomarins en Armes",40],["Dame Inquisitrice Kyria Draxus",75],["Entourage de Libre Marchand",105],["Escouade Subductor",110],["Escouade Vigilant",105],["Escouade d’Exaction",35],["Hommes de Main de l’Inquisition",40],["Inquisiteur",55],["Inquisiteur Coteaz",75],["Inquisiteur Eisenhorn",65],["Inquisiteur Karamazov",130],["Inquisitrice Greyfax",65],["Sapeurs de la Marine Impériale",105]]},
+"astra-militarum":{n:"Astra Militarum",u:[["Attachés Régimentaires",40],["Baneblade",540],["Banehammer",490],["Banesword",515],["Basilisk",110],["Batterie d’Artillerie",100],["Castellan Cadien",50],["Cavaliers d’Attila",80],["Char de Combat Leman Russ",195],["Char de Combat Rogal Dorn",285],["Chimera",85],["Combattants des Jungles de Catachan",65],["Commandant Blindé",240],["Commissaire",35],["Death Korps de Krieg",65],["Deathstrike",135],["Doomhammer",455],["Escouade d’Armes Lourdes",60],["Escouade d’État-Major Cadienne",65],["Escouade d’État-Major de Peloton",60],["Escouade d’État-Major du Militarum Tem- pestus",80],["Escouade d’Infanterie",65],["Escouade d’Ogryns",75],["Escouade de Taurogryns",90],["Fantômes de Gaunt",115],["Fils du Tempestus",60],["Garde du Corps Ogryn",40],["Hellhammer",510],["Hellhound",125],["Hydra",95],["Kasrkin",120],["Leman Russ Demolisher",220],["Leman Russ Eradicator",180],["Leman Russ Executioner",195],["Leman Russ Exterminator",200],["Leman Russ Punisher",180],["Leman Russ Vanquisher",190],["Ligne de Défense Aegis",145],["Manticore",105],["Nork Deddog",70],["Prêcheur Régimentaire",35],["Psyker Primaris",60],["Seigneur Solaire Leontus",125],["Sentinel Blindés",70],["Sentinel de Reconnaissance",50],["Sergent Harker",60],["Servitors du Munitorum",35],["Shadowsword",440],["Sly Marbo",75],["Snipers Ratlings",70],["Stormlord",460],["Stormsword",520],["Straken “Poing de Fer”",80],["Taurox",65],["Taurox Primus",90],["Technaugure Régimentaire",45],["Troupes de Choc Cadiennes",65],["Ursula Creed",55],["Valkyrie",200],["Wyvern",90]]},
+"black-templars":{n:"Black Templars",u:[["Castellan",70],["Le Champion de l’Empereur",85],["Chapelain Grimaldus",120],["Escouade Crusader",75],["Escouade Crusader Primaris 1 Frère d’Épée, 5 Initiés",160],["Frères d’Épée Primaris",150],["Gladiator Lancer des Black Templars",160],["Gladiator Reaper des Black Templars",175],["Gladiator Valiant des Black Templars",180],["Grand Sénéchal Helbrecht",105],["Impulsor des Black Templars",115],["Maréchal",75],["Repulsor Executioner des Black Templars",245],["Repulsor des Black Templars",220]]},
+"blood-angels":{n:"Blood Angels",u:[["Astorath",100],["Capitaine Tycho",75],["Commandeur Dante",135],["Dreadnought Archiviste",185],["Dreadnought de la Compagnie de la Mort",195],["Dreadnought Furioso",165],["Frère Corbulo",75],["Gabriel Seth",110],["Garde Sanguinienne",215],["Intercessors de la Compagnie de la Mort",90],["Lemartes",135],["Marines de la Compagnie de la Mort",130],["Marines de la Compagnie de la Mort à Réacteurs Dorsaux",155],["Maître Archiviste Méphiston",120],["Predator Baal",125],["Prêtre Sanguinien",100],["Prêtre Sanguinien à Réacteur Dorsal",110],["Le Sanguinor",160],["Tycho l’Égaré",90]]},
+"demons-chaos":{n:"Démons du Chaos",u:[["Autel des Crânes",105],["Be’lakor",325],["Bourdons de la Peste",120],["Broyeur d’Âmes",215],["Buveur de Sang",300],["Bêtes de Nurgle",75],["Canon à Crânes",115],["Char Ardent",135],["Char Traqueur",75],["Char Traqueur Exalté",115],["Char Écorcheur",110],["Charnelles",150],["Comique Tripier",55],["Duc du Changement",230],["Démonettes",140],["Epidemius",85],["Falsificateur",65],["Fluctuarque",60],["Fortunarque",105],["Gardien des Secrets",330],["Grand Immonde",280],["Gueule Noueuse Immonde",100],["Horreurs Bleues",125],["Horreurs Roses",140],["Horticulous Slimux",120],["Hurleurs",90],["Incendiaire Exalté",70],["Incendiaires",65],["Kairos Fateweaver",285],["Karanak",85],["Maître des Crânes",105],["Maître du Sang",85],["Le Masque de Slaanesh",105],["Molosses de Khorne",70],["Mutileur sur Trône de Sang",150],["Le Mystificateur",75],["Nurglings",40],["Porte-vérole",75],["Portepestes",145],["Preneur de Crânes",95],["Prince Démon du Chaos",215],["Prince Démon du Chaos Ailé",195],["Rotigus",285],["Sanguinaires",160],["Scribe Avarieur",65],["Les Scribes Bleus",65],["Shalaxi Helbane",400],["Skarbrand",365],["Syll’esske",140],["Séductrice Infernale",65],["Tissetranse",60],["Tourmenteuse sur Char Traqueur Exalté",160],["Veneuses",95],["Épitome Tortueux",85],["Équarrisseurs",120]]},
+"chevaliers-chaos":{n:"Chevaliers du Chaos",u:[["Chevalier Abominable",395],["Chevalier Pillard",410],["Chevalier Profanateur",390],["Chevalier Saccageur",395],["Chevalier Tyran",485],["Dogue Brigand",150],["Dogue Chasseur",140],["Dogue Exécuteur",135],["Dogue Karnivore",160],["Dogue Rabatteur",135]]},
+"csm":{n:"Space Marines du Chaos",u:[["Abaddon le Fléau",280],["Accusateur Renégat",65],["Apôtre Noir",85],["Bande de Cultistes",55],["Champion Exalté",70],["Couronne de Noctilithe",125],["Cultistes Maudits",95],["Cypher",105],["Escouade Terminator du Chaos",195],["Escouade de Gardes Renégats",70],["Fabius Bile",100],["Ferrocentaurus",165],["Ferrocerberus",155],["Haarken Worldclaimer",120],["Havocs",135],["Hommes-bêtes Affregors",95],["Huron Blackheart",80],["Land Raider du Chaos",255],["Lucius l’Éternel",95],["Légionnaires",100],["Marines du Vacarme",85],["Maître de la Possession",70],["Maître des Exécutions",80],["Motards du Chaos",95],["Métabrutus",155],["Métadrak",205],["Métaragne",140],["Obliterators",160],["Possédés",145],["Predator Annihilator du Chaos",135],["Predator Destructor du Chaos",130],["Prince Démon de l’Hereticus Astartes",180],["Prince Démon de l’Hereticus Astartes Ailé",195],["Profanateur",210],["Rapaces",95],["Rejetons du Chaos",80],["Rhino du Chaos",85],["Seigneur de la Discorde sur Métarôdeur",220],["Seigneur des Crânes de Khorne",420],["Seigneur du Chaos",75],["Seigneur du Chaos en Armure Terminator",100],["Serres du Warp",130],["Sombre Communion",55],["Sorcier",60],["Sorcier en Armure Terminator",90],["Techmancien",70],["Vashtorr l’Arkifane",225],["Vindicator du Chaos",210],["Élus",115]]},
+"dark-angels":{n:"Dark Angels",u:[["Asmodaï",70],["Azraël",120],["Bélial",100],["Chasseur Néphilim",195],["Chevaliers Noirs de la Ravenwing",115],["Chevaliers de la Deathwing",235],["Dark Talon de la Ravenwing",210],["Darkshroud de la Ravenwing",125],["Escouade Terminator de la Deathwing",205],["Escouade d’État-major de la Deathwing",215],["Escouade d’État-major de la Ravenwing",145],["Land Speeder Vengeance de la Ravenwing",160],["Lazarus",80],["Lion El’Jonson",380],["Maître de Frappe de la Deathwing",90],["Maître de Serre de la Ravenwing",115],["Sammaël",145],["Ézékiel",80]]},
+"death-guard":{n:"Death Guard",u:[["Biologus Putréfacteur",60],["Chenillé Crachepeste",175],["Chirurgien de la Peste",65],["Corrupteur Nidoreux",55],["Cultistes de la Death Guard",55],["Délabreur Délétère",60],["Drone Fétide",135],["Essaimeur Répugnant",75],["Exhausteur Pandémique",115],["Intendant",55],["Land Raider de la Death Guard",250],["Marines de la Peste",100],["Mortarion",370],["Métabrutus de la Death Guard",155],["Porte-icône de la Death Guard",55],["Predator Annihilator de la Death Guard",130],["Predator Destructor de la Death Guard",140],["Prince Démon de la Death Guard",170],["Prince Démon de la Death Guard Ailé",215],["Profanateur de la Death Guard",205],["Rejetons du Chaos de la Death Guard",75],["Rhino de la Death Guard",80],["Seigneur de la Contagion",100],["Seigneur de la Virulence",115],["Seigneur du Chaos de la Death Guard",75],["Seigneur du Chaos de la Death Guard en Armure Terminator",100],["Semi-chenillés Méphitiques",115],["Sorcier de la Death Guard en Armure Terminator",80],["Terminators Rouillarques",175],["Terminators du Linceul",140],["Typhus",115],["Véroleux",60]]},
+"deathwatch":{n:"Deathwatch",u:[["Capitaine du Guet Artemis",75],["Corvus Blackstar",180],["Escouade Terminator Deathwatch",210],["Escouade de Vétérans à Motos",85],["Kill Team Cassius",255],["Kill Team Fortis",115],["Kill Team Indomitor",135],["Kill Team Proteus",165],["Kill Team Spectrus",110],["Maître du Guet",115],["Vétérans Deathwatch",100]]},
+"drukhari":{n:"Drukhari",u:[["Archonte",85],["Belluaire",120],["Bombardier Korvide",195],["Chasseur Stymphale",170],["Cour de l’Archonte",95],["Cronos",50],["Cérastes",110],["Drazhar",105],["Fléaux",120],["Gorgones",65],["Grotesques",105],["Guerriers Kabalites",120],["Hellions",110],["Hémoncule",75],["Incubes",85],["Lelith Hesperax",105],["Mandragores",70],["Ravageur",95],["Saccageur",90],["Succube",70],["Talos",90],["Urien Rakarth",105],["Venom",80],["Écumeurs",75]]},
+"genestealers":{n:"Cultes Genestealers",u:[["Aberrants",165],["Abominant",75],["Acolyte Garde-icône",50],["Alphus Chacal",60],["Biophagus",50],["Camion Goliath",110],["Chacals Atalans",80],["Clamavus",40],["Concasseur Goliath",155],["Genestealers Pure-souche",90],["Hybrides Acolytes",75],["Hybrides Métamorphes",80],["Hybrides Néophytes",80],["Kelermorphe",55],["Locus",40],["Magus",50],["Nexos",50],["Patriarche",85],["Primus",70],["Saboteur Reductus",55],["Sanctus",50],["Tout-terrain Achilles",75]]},
+"grey-knights":{n:"Grey Knights",u:[["Archiviste de Confrérie",110],["Castellan Crowe",95],["Champion de Confrérie",85],["Chapelain de Confrérie",90],["Cuirassier Némésis",215],["Dreadnought Vénérable des Grey Knights",155],["Escouade d’Incursion",135],["Escouade Interceptor",160],["Escouade Paladin",255],["Escouade Purgator",165],["Escouade Purificator",150],["Escouade Terminator de Confrérie",225],["Escorteur Stormraven des Grey Knights",265],["Escorteur Stormtalon des Grey Knights",170],["Frère-Capitaine",95],["Frère-Capitaine Stern",110],["Grand Maître",115],["Grand Maître Voldus",115],["Grand Maître en Cuirasse Némésis",245],["Intercepteur Stormhawk des Grey Knights",160],["Kaldor Draigo",155],["Land Raider des Grey Knights",270],["Land Raider Crusader des Grey Knights",250],["Land Raider Redeemer des Grey Knights",290],["Razorback des Grey Knights",95],["Rhino des Grey Knights",80],["Servitors",50],["Techmarine de Confrérie",85]]},
+"chevaliers-imperiaux":{n:"Chevaliers Impériaux",u:[["Armigère Hastaire",140],["Armigère Helvérien",145],["Canis Rex",405],["Chevalier Castellan",495],["Chevalier Croisé",415],["Chevalier Errant",375],["Chevalier Galant",400],["Chevalier Paladin",390],["Chevalier Précepteur",375],["Chevalier Vaillant",490],["Chevalier Vigilant",420]]},
+"votann":{n:"Ligues de Votann",u:[["Beserks Cthoniens",135],["Champion Einhyr",75],["Forteresse Mobile Hekaton",245],["Grimnyr",75],["Guerriers Âtrekogs",135],["Kâhl",90],["Maître-fer Brôkhyr",75],["Pionniers Hernkogs",105],["Sagitaur",120],["Tonnekogs Brokhyrs",95],["Âtregardes Einhyrs",165],["Ûthar le Destiné",115]]},
+"necrons":{n:"Nécrons",u:[["Anrakyr le Voyageur",95],["Arachnydes Canopteks",75],["Arche Fantôme",125,100],["Arche du Jugement Dernier",185,200],["Chronomancien",50,80],["Console de Commandement",150,120],["Console d’Annihilation",115],["Convergence de Domination",255,180],["Crypte Tesseract",425,445],["Cryptoserfs",40,60],["C’tan Transcendant",280,340],["Destroyer Hexmark",70,75],["Destroyers Lokhusts",30,40],["Destroyers Lourds Lokhusts",45,50],["Destroyers Ophydiens",110,80],["Destroyers Skorpekhs",110,85],["Dynaste",65],["Dépeceurs",70,55],["Factionnaires",95],["Faucheur",225],["Garde Royal",40,50],["Guerriers Nécrons",120,80],["Illuminor Szeras",220,175],["Immortels",70,70],["Imotekh le Seigneur des Tempêtes",105,100],["Maraudeur Canoptek",125],["Moissonneur",145],["Monolithe",385,420],["Mécanoptères",80],["Nuées de Scarabées Canopteks",40],["Némésor Zahndrekh",85],["Obélisque",325,280],["Orikan le Devin",80,90],["Plasmancien",55,55],["Prétoriens du Triarcat",135,80],["Psychomancien",50,55],["Le Roi Silencieux",470,400],["Réanimateur Canoptek",95],["Rôdeur du Triarcat",125,110],["Seigneur Lokhust",85,70],["Seigneur Skorpekh",115,90],["Spectres Canopteks",110,95],["Technomancien",60,80],["Traqueurs",65,60],["Trazyn l’Infini",75,65],["Tétrarque",85],["Vargarde Obyron",85],["Écharde C’tan du Dragon du Néant",270,345],["Écharde C’tan du Mystificateur",265,330],["Écharde C’tan du Nyctophore",255,360]]},
+"orks":{n:"Orks",u:[["Atelier de Mekboy",80],["Bizarboy",55],["Blitza-bomba",115],["Boosta-klata Kustom",85],["Boss Dresseur",80],["Boss Dresseur sur Squigosaure",165],["Boss Snikrot",105],["Boss Zagstruk",100],["Boss de Guerre",70],["Boss de Guerre en Méga-armure",95],["Boyz",85],["Boyz Alpagueurs",105],["Boyz sur Squigliers",110],["Boît’kitu",150],["Brikojet Mégach’nillé",90],["Buggy Fourre-squigs",110],["Chariot Boumdakka de lux’",90],["Chariot d’Guerre",185],["Chokboyz",65],["Dakkajet",135],["Dragsta Shokk",85],["Dred eud’ la Mort",150],["Frimeurs",95],["Ghazghkull Thraka",235],["Gorkanaute",295],["Gretchins",45],["Gros Mek avec Champ de Force Kustom",65],["Gros Mek avec Kanon Shokk",75],["Gros Mek en Méga-armure",100],["Gro’Bunker d’Boss",135],["Kamion",50],["Kanons d’Mek",45],["Kap’tain’ Badrukk",95],["Kariol’ Kichass’",180],["Kariol’ Kitu",220],["Kass’tanks",135],["Klat’jet Wazboum",175],["Kommandos",135],["Kopters d’La Mort",115],["Krabouilleur",800],["Krama-bomba",125],["Kram’boyz",65],["Mad Dok Grotsnik",75],["Mek",45],["Morkanaute",305],["Motards de Guerre",75],["Mozrog Skragbad",195],["Médiboss",70],["Médiko",80],["Méganobz",65],["Nob avec Bannière Waaagh!",70],["Nob sur Squig Krazeur",75],["Nobz",115],["Pillards",55],["Trike Morkitu",90],["Zarboy",60],["Zodgrod Wortsnagga",80]]},
+"space-marines":{n:"Space Marines",u:[["Adrax Agatone",100],["Apothicaire Biologis",55],["Apothicaire Primaris",55],["Archiviste",75],["Archiviste à Réacteur Dorsal",75],["Archiviste Primaris",70],["Archiviste en Armure Phobos",75],["Archiviste en Armure Terminator",90],["Bunker Hammerfall",210],["Canon Thunderfire",90],["Capitaine",80],["Capitaine Primaris",80],["Capitaine Sicarius",95],["Capitaine en Armure Gravis",95],["Capitaine en Armure Phobos",80],["Capitaine en Armure Terminator",95],["Capitaine à Moto",95],["Capitaine à Réacteur Dorsal",100],["Champion de Compagnie Primaris",55],["Chapelain",70],["Chapelain Cassius",80],["Chapelain Primaris",65],["Chapelain en Armure Terminator",90],["Chapelain à Moto",80],["Chapelain à Réacteur Dorsal",85],["Darnath Lysander",115],["Doyen Bladeguard",50],["Doyen Primaris",55],["Doyen en Armure Terminator",90],["Dreadnought",160],["Dreadnought Ballistus",170],["Dreadnought Brutalis",220],["Dreadnought Contemptor",170],["Dreadnought Ironclad",150],["Dreadnought Redemptor",225],["Escorteur Stormraven",255],["Escorteur Stormtalon",175],["Escouade Aggressor",110],["Escouade Centurion Devastator",205],["Escouade d’Assaut",95],["Escouade d’Assaut Centurion",175],["Escouade d’Assaut Intercessor",90],["Escouade d’Assaut Terminator",200],["Escouade d’Assaut à Réacteurs Dorsaux",115],["Escouade d’État-major",165],["Escouade Desolator",120],["Escouade Devastator",120],["Escouade Eliminator",95],["Escouade Eradicator",95],["Escouade Hellblaster",125],["Escouade Inceptor",115],["Escouade Incursor",90],["Escouade Infernus",90],["Escouade Infiltrator",90],["Escouade Intercessor",95],["Escouade Lourde Intercessor",110],["Escouade Outrider",115],["Escouade Reiver",95],["Escouade Suppressor",95],["Escouade Tactique",175],["Escouade Terminator",205],["Escouade Terminator Relic",200],["Escouade de Motos",80],["Escouade de Motos Scouts",75],["Escouade de Motos d’Assaut",55],["Escouade de Scouts",70],["Escouade de Scouts Snipers",75],["Escouade de Vétérans Bladeguards",100],["Escouade de Vétérans Sternguards",105],["Escouade de Vétérans Vanguards",120],["Escouade de Vétérans Vanguards à Réacteurs Dorsaux",130],["Exo-harnais Tactique Invictor",160],["Gladiator Lancer",145],["Gladiator Reaper",155],["Gladiator Valiant",155],["Hunter",100],["Impulsor",95],["Intercepteur Stormhawk",165],["Judicateur",75],["Kayvaan Shrike",110],["Kor’sarro Khan",80],["Land Raider",275],["Land Raider Crusader",255],["Land Raider Redeemer",295],["Land Speeder",80],["Land Speeder Storm",70],["Land Speeder Tornado",95],["Land Speeder Typhoon",100],["Lieutenant",80],["Lieutenant avec Arme Combinée",80],["Lieutenant Primaris",75],["Lieutenant en Armure Phobos",60],["Lieutenant en Armure Reiver",65],["Marneus Calgar",205],["Maître Archiviste Tigurius",85],["Module de Largage",70],["Pedro Kantor",100],["Predator Annihilator",130],["Predator Destructor",135],["Quad Invader",80],["Razorback",100],["Repulsor",195],["Repulsor Executioner",230],["Rhino",85],["Roboute Guilliman",355],["Révérend de Fer Feirros",105],["Sergent Chronus",75],["Sergent Telion",70],["Servitors de l’Astartes",55],["Servo-tourelles Firestrike",80],["Stalker",140],["Storm Speeder Hailstrike",130],["Storm Speeder Hammerstrike",160],["Storm Speeder Thunderstrike",160],["Techmarine",70],["Techmarine Primaris",65],["Tor Garadon",100],["Uriel Ventris",85],["Vindicator",205],["Vulkan He’stan",95],["Vétérans des Guerres Tyraniques",85],["Whirlwind",125]]},
+"space-wolves":{n:"Space Wolves",u:[["Arjac Rockfist",105],["Björn Main Funeste",220],["Canis Wolfborn",85],["Cavalerie sur Loups Tonnerre",100],["Chasseurs Gris",90],["Chef de Bataille Garde Loup en Armure Terminator",80],["Chef de Bataille Garde Loup sur Loup Tonnerre",95],["Chef de Meute Garde Loup",30],["Chef de Meute Garde Loup à Réacteur Dorsal",40],["Chef de Meute Garde Loup en Armure Terminator",45],["Cyberloup",20],["Dreadnought Vénérable des Space Wolves",170],["Dreadnought Wulfen",155],["Escorteur Stormfang",300],["Gardes Loups",95],["Griffes Sanglantes",140],["Harald Deathwolf",95],["Krom Dragongaze",80],["Logan Grimnar",145],["Logan Grimnar sur Stormrider",235],["Longs Crocs",150],["Loups Fenrissiens",30],["Lukas le Trompeur",55],["Molosses de Morkaï",95],["Murderfang",190],["Njál Stormcaller",95],["Prêtre de Fer",60],["Ragnar Blackmane",105],["Scouts Space Wolves",80],["Seigneur Loup sur Loup Tonnerre",100],["Serres Sanglantes",95],["Stormwolf",250],["Terminators Gardes Loups",200],["Ulrik le Tueur",85],["Wulfen",100]]},
+"tau":{n:"Empire T’au",u:[["Aun’Shi",60],["Aun’Va",65],["Bombardier Sun Shark",150],["Carnivores Kroots",75],["Cavaliers Krootox",35],["Char Hammerhead",145],["Char Sky Ray",160],["Chasseur Razorshark",165],["Chiens Kroots",30],["Commandant Farsight",120],["Commandant en Exo-armure Coldstar",125],["Commandant en Exo-armure Crisis",110],["Commandant en Exo-armure Enforcer",135],["Commandante Shadowsun",140],["Darkstrider",75],["Devilfish",95],["Droneport Tidewall",85],["Drones Tactiques",70],["Équipe d’Attaque",100],["Équipe de Brécheurs",115],["Équipe de Cibleurs",120],["Équipe de Tir Furtive",70],["Éthéré",50],["Exo-armure Ghostkeel",170],["Exo-armure Riptide",235],["Exo-armures Broadside",110],["Exo-armures Crisis",195],["Exo-armures Stealth",75],["Exorôdeurs Kroots",105],["Frelons Vespides",75],["Ligne-bouclier Tidewall",85],["Longstrike",170],["Mentor Kroot",50],["Piranha",55],["Sabre de Feu",50],["Stormsurge",405],["Tourelle Tidewall",90]]},
+"thousand-sons":{n:"Thousand Sons",u:[["Ahriman",110],["Ahriman sur Disque de Tzeentch",115],["Chaman Tzaangor",60],["Cultistes des Thousand Sons",65],["Ferrocentaurus des Thousand Sons",135],["Ferrocerberus des Thousand Sons",140],["Land Raider des Thousand Sons",250],["Magnus le Rouge",410],["Marines Rubricae",95],["Maître Infernal",75],["Mutalithe à Vortex",145],["Métabrutus des Thousand Sons",145],["Métadrak des Thousand Sons",195],["Predator Annihilator des Thousand Sons",120],["Predator Destructor des Thousand Sons",125],["Prince Démon des Thousand Sons",210],["Prince Démon des Thousand Sons Ailé",190],["Profanateur des Thousand Sons",200],["Rejetons du Chaos des Thousand Sons",65],["Rhino des Thousand Sons",75],["Sorcier Exalté",90],["Sorcier Exalté sur Disque de Tzeentch",105],["Sorcier des Thousand Sons",85],["Sorcier des Thousand Sons en Armure Terminator",105],["Terminators du Scarabée Occulte",205],["Tzaangors",65],["Tzaangors Éclairés",45],["Vindicator des Thousand Sons",200]]},
+"tyranides":{n:"Tyranides",u:[["Barbgaunts",50],["Biovores",40],["Bondisseurs de Von Ryan",75],["Carnifex",125],["Exocrine",135],["Gardes Tyranides",95],["Gardes des Ruches",100],["Gargouilles",75],["Genestealers",90],["Guerriers Tyranides avec Bio-armes de Mêlée",90],["Guerriers Tyranides avec Bio-armes de Tir",70],["Génocrate",100],["Harpie",170],["Haruspex",125],["Hormagaunts",70],["Lictor",75],["Le Maître des Essaims",250],["Maleceptor",165],["Mawloc",145],["La Mort Subite",80],["Neurogaunts",45],["Neurotyran",105],["Nuées de Voraces",35],["Parasite de Mortrex",90],["Primat Tyranide Ailé",80],["Psychophage",125],["Pyrovores",30],["Rôdeurs",75],["Spores MInes",50],["Spores Mucolides",45],["Sporokyste",145],["Termagants",60],["Tervigon",200],["Toxicrène",200],["Trygon",180],["Tueur-hurleur",180],["Tyran des Ruches",220],["Tyran des Ruches Ailé",195],["Tyrannocyte",105],["Tyrannofex",200],["Venomthropes",70],["Le Vieux Borgne",140],["Virago des Ruches",200],["Zoanthropes",90]]},
+"world-eaters":{n:"World Eaters",u:[["Angron",415],["Berzerks de Khorne",115],["Chakhals",75],["Escouade Terminator des World Eaters",195],["Ferrocentaurus des World Eaters",150],["Ferrocerberus des World Eaters",175],["Khârn le Félon",95],["Land Raider des World Eaters",255],["Maître des Exécutions des World Eaters",80],["Métabrutus des World Eaters",150],["Métadrak des World Eaters",215],["Octoliés",155],["Octoliés Exaltés",180],["Predator Annihilator des World Eaters",130],["Predator Destructor des World Eaters",130],["Prince Démon des World Eaters",220],["Prince Démon des World Eaters Ailé",215],["Profanateur des World Eaters",210],["Rejetons du Chaos des World Eaters",65],["Rhino des World Eaters",85],["Seigneur Invocatus",155],["Seigneur des Crânes de Khorne",420],["Seigneur des World Eaters sur Juggernaut",120]]}
+};
+
+function refLookup(fid,unit){var u=_norm(unit);if(!u)return null;function find(arr){for(var i=0;i<arr.length;i++){if(_norm(arr[i][0])===u)return {v10:arr[i][1],v11:arr[i].length>2?arr[i][2]:null};}return null;}var f=PTSREF[fid];if(f){var r=find(f.u);if(r)return r;}for(var k in PTSREF){var r2=find(PTSREF[k].u);if(r2)return r2;}return null;}
+function ptUnitsFor(fid){return (PTSREF[fid]?PTSREF[fid].u.map(function(x){return x[0];}):[]);}
+function ptAutofill(el){var row=el.closest('.pt-row');if(!row)return;var m=refLookup(pointsState.faction,el.value);if(m){var a=row.querySelector('.pt-v10'),b=row.querySelector('.pt-v11');if(m.v10!=null&&a.value==='')a.value=m.v10;if(m.v11!=null&&b.value==='')b.value=m.v11;}}
+function setDatalist(id,arr){const dl=document.getElementById(id);if(dl)dl.innerHTML=arr.map(u=>`<option value="${u.replace(/"/g,'&quot;')}"></option>`).join('');}
+let pointsState={faction:'',limit:0,rows:[]};
+if(store.ok){try{const s=JSON.parse(localStorage.getItem('cc_points')||'null');if(s&&Array.isArray(s.rows))pointsState=s;}catch(e){}}
+function savePoints(){if(store.ok){try{localStorage.setItem('cc_points',JSON.stringify(pointsState));}catch(e){}}}
+function ptRow(r,i){
+  var list=(pointsState.faction&&PTSREF[pointsState.faction])?PTSREF[pointsState.faction].u:[];
+  var cur=r.unit||'',inList=false;
+  var opts='<option value="">— Unité —</option>';
+  for(var k=0;k<list.length;k++){var nm=list[k][0];var sel=(nm===cur)?' selected':'';if(sel)inList=true;opts+='<option value="'+esc(nm)+'"'+sel+'>'+esc(nm)+'</option>';}
+  if(cur&&!inList)opts+='<option value="'+esc(cur)+'" selected>'+esc(cur)+'</option>';
+  return '<div class="pt-row"><div class="pt-top"><select class="pt-unit">'+opts+'</select><button class="pt-del" data-i="'+i+'" title="Retirer">×</button></div><div class="pt-grid"><div class="pt-cell"><label>Qté</label><input class="pt-qty" type="number" min="0" inputmode="numeric" value="'+(r.qty!=null?r.qty:1)+'"></div><div class="pt-cell"><label>Pts V10</label><input class="pt-v10" type="number" min="0" inputmode="numeric" value="'+(r.v10!=null?r.v10:'')+'"></div><div class="pt-cell"><label>Pts V11</label><input class="pt-v11" type="number" min="0" inputmode="numeric" value="'+(r.v11!=null?r.v11:'')+'"></div></div><div class="pt-calc"><span class="pt-sub">—</span></div></div>';
+}
+function renderPoints(){
+  if(!pointsState.rows.length)pointsState.rows=[{unit:'',qty:1,v10:'',v11:''}];
+  const facOpts='<option value="">— Faction —</option>'+PTORDER.map(function(fid){return '<option value="'+fid+'"'+(pointsState.faction===fid?' selected':'')+'>'+esc(PTSREF[fid].n)+'</option>';}).join('');
+  document.getElementById('pointsBody').innerHTML=
+    `<div class="points-intro">Compare le coût en <b>points</b> entre <b>V10</b> et <b>V11</b>. <b>Base V10 intégrée</b> pour les 27 factions (Munitorum, en français) : choisis une faction puis une unité dans la liste → le coût <b>V10</b> se remplit. La <b>V11</b> est pré-remplie pour les <b>Nécrons</b>. Valeurs = taille d'unité minimale, tout reste modifiable. Le tableur calcule totaux, écart et %.</div>`
+   +`<div class="pt-controls"><select id="ptFaction">${facOpts}</select><input id="ptLimit" type="number" min="0" inputmode="numeric" placeholder="Limite (ex. 2000)" value="${pointsState.limit||''}"></div>`
+   +`<div class="pt-head"><span>Unité</span><span>Qté</span><span>V10</span><span>V11</span></div>`
+   +`<div id="ptRows">${pointsState.rows.map(ptRow).join('')}</div>`
+   +`<button class="act" id="ptAdd" style="width:100%;margin:2px 0 14px">+ Ajouter une unité</button>`
+   +`<div id="ptTotals" class="pt-total"></div>`
+   +`<div class="pt-actions"><button class="act" id="ptClear">Vider</button></div>`;
+  recalcPoints();
+}
+function collectPoints(){
+  const fe=document.getElementById('ptFaction'),le=document.getElementById('ptLimit');
+  if(fe)pointsState.faction=fe.value;
+  if(le)pointsState.limit=+le.value||0;
+  pointsState.rows=[...document.querySelectorAll('#ptRows .pt-row')].map(el=>({unit:el.querySelector('.pt-unit').value.trim(),qty:+el.querySelector('.pt-qty').value||0,v10:el.querySelector('.pt-v10').value===''?'':(+el.querySelector('.pt-v10').value||0),v11:el.querySelector('.pt-v11').value===''?'':(+el.querySelector('.pt-v11').value||0)}));
+}
+function recalcPoints(){
+  collectPoints();
+  let t10=0,t11=0;
+  document.querySelectorAll('#ptRows .pt-row').forEach(el=>{
+    const q=+el.querySelector('.pt-qty').value||0,v10=+el.querySelector('.pt-v10').value||0,v11=+el.querySelector('.pt-v11').value||0;
+    const a=q*v10,b=q*v11,dd=b-a;t10+=a;t11+=b;
+    const cl=dd>0?'up':(dd<0?'down':'');
+    el.querySelector('.pt-sub').innerHTML=`V10 : <b>${a}</b> · V11 : <b>${b}</b> · <span class="delta ${cl}">Δ ${dd>0?'+':''}${dd}</span>`;
+  });
+  const dt=t11-t10,pct=t10?Math.round(dt/t10*1000)/10:0,cl=dt>0?'up':(dt<0?'down':'');
+  let lim='';
+  if(pointsState.limit>0){const rem=pointsState.limit-t11;lim=`<div class="pt-lim ${rem<0?'over':''}">Limite ${pointsState.limit} · Reste V11 : <b>${rem}</b>${rem<0?' — dépassé':''}</div>`;}
+  document.getElementById('ptTotals').innerHTML=`<div class="pt-trow"><span>Total V10</span><b>${t10} pts</b></div><div class="pt-trow"><span>Total V11</span><b>${t11} pts</b></div><div class="pt-trow big"><span>Différence V10 → V11</span><b class="delta ${cl}">${dt>0?'+':''}${dt} pts (${dt>0?'+':''}${pct}%)</b></div>${lim}`;
+  savePoints();
+}
+(function(){
+  const pe=document.getElementById('view-points');
+  pe.addEventListener('input',e=>{
+    if(e.target.id==='ptFaction'||(e.target.classList&&e.target.classList.contains('pt-unit')))return;
+    recalcPoints();
+  });
+  pe.addEventListener('change',e=>{
+    if(e.target.id==='ptFaction'){collectPoints();pointsState.faction=e.target.value;renderPoints();return;}
+    if(e.target.classList&&e.target.classList.contains('pt-unit')){ptAutofill(e.target);recalcPoints();}
+  });
+  pe.addEventListener('click',e=>{
+    if(e.target.closest('#ptAdd')){collectPoints();pointsState.rows.push({unit:'',qty:1,v10:'',v11:''});renderPoints();return;}
+    if(e.target.closest('#ptClear')){if(confirm('Vider le calculateur de points ?')){pointsState={faction:pointsState.faction,limit:0,rows:[]};savePoints();renderPoints();}return;}
+    const d=e.target.closest('.pt-del');if(d){collectPoints();pointsState.rows.splice(+d.dataset.i,1);renderPoints();return;}
+  });
+})();
+
+/* ===================== TEINTES : correspondance couleur (CIE Lab) ===================== */
+function cRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function cLab(r,g,b){const R=[r,g,b].map(v=>{v/=255;return v>0.04045?Math.pow((v+0.055)/1.055,2.4):v/12.92;});let X=(R[0]*0.4124+R[1]*0.3576+R[2]*0.1805)/0.95047,Y=R[0]*0.2126+R[1]*0.7152+R[2]*0.0722,Z=(R[0]*0.0193+R[1]*0.1192+R[2]*0.9505)/1.08883;const f=t=>t>0.008856?Math.cbrt(t):7.787*t+16/116;const fx=f(X),fy=f(Y),fz=f(Z);return [116*fy-16,500*(fx-fy),200*(fy-fz)];}
+function cDE(a,b){return Math.sqrt((a[0]-b[0])*(a[0]-b[0])+(a[1]-b[1])*(a[1]-b[1])+(a[2]-b[2])*(a[2]-b[2]));}
+function cHsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2;let h=0,s=0;if(mx!==mn){const d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h*=60;}return [h,s,l];}
+function cHslToRgb(h,s,l){h/=360;function q2(p,q,t){if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;}let r,g,b;if(s===0){r=g=b=l;}else{const q=l<0.5?l*(1+s):l+s-l*s,p=2*l-q;r=q2(p,q,h+1/3);g=q2(p,q,h);b=q2(p,q,h-1/3);}return [Math.round(r*255),Math.round(g*255),Math.round(b*255)];}
+function cRgbHex(a){return '#'+a.map(v=>Math.max(0,Math.min(255,v)).toString(16).padStart(2,'0')).join('');}
+function triadOf(hex){const rgb=cRgb(hex),hsl=cHsl(rgb[0],rgb[1],rgb[2]),h=hsl[0],s=hsl[1],l=hsl[2];
+  const sh=cHslToRgb(h,Math.min(1,s+0.06),Math.max(0.04,l-0.16));
+  const hi=cHslToRgb(h,Math.max(0,s-0.10),Math.min(0.96,l+0.18));
+  return {shadow:cRgbHex(sh),mid:hex,highlight:cRgbHex(hi)};}
+function bestMatch(hex){const rgb=cRgb(hex),lab=cLab(rgb[0],rgb[1],rgb[2]);let best=null;for(const p of PAINTLAB){if(!(colState.brand==='all'||(colState.brand==='ap'?p.ap:!p.ap)))continue;const de=cDE(lab,p.lab);if(!best||de<best.de)best={de:de,name:p.name,hex:p.hex};}return best;}
+const PAINTLAB=Object.keys(P).map(n=>{const rgb=cRgb(P[n].h);return {name:n,hex:P[n].h,t:P[n].t,ap:/\(AP\)$/.test(n),lab:cLab(rgb[0],rgb[1],rgb[2])};});
+function describeTint(hex){
+  const rgb=cRgb(hex),hsl=cHsl(rgb[0],rgb[1],rgb[2]),h=hsl[0],s=hsl[1],l=hsl[2];
+  if(s<0.10)return l<0.10?'Noir':l<0.30?'Gris très foncé':l<0.62?'Gris moyen':l<0.86?'Gris clair':'Blanc cassé';
+  let name;
+  if(h<15||h>=345)name='Rouge';else if(h<40)name='Orange';else if(h<65)name='Jaune';else if(h<160)name='Vert';else if(h<200)name='Turquoise';else if(h<255)name='Bleu';else if(h<290)name='Violet';else name='Rose';
+  const lum=l<0.22?'très foncé':l<0.42?'foncé':l<0.62?'moyen':l<0.82?'clair':'très clair';
+  const sat=s<0.30?'grisé':s<0.60?'moyennement saturé':'vif';
+  return name+' '+lum+', '+sat;
+}
+let colState={hex:'#9a1115',brand:'all'};
+if(store.ok){try{const v=localStorage.getItem('cc_color');if(v&&/^#[0-9a-fA-F]{6}$/.test(v))colState.hex=v;}catch(e){}}
+function renderColors(){
+  document.getElementById('colorsBody').innerHTML=
+    `<div class="points-intro">Entre une couleur ou un <b>code hex</b> (ex. #9A1115), ou pars d'une peinture. L'app décrit la teinte et liste les peintures les plus proches — Citadel <b>et</b> Army Painter — avec un <b>% de proximité</b> (calcul perceptuel CIE Lab). Filtre par marque pour trouver l'équivalent d'une autre marque.</div>`
+   +`<div class="col-pick"><input type="color" id="colPick" value="${colState.hex}"><input type="text" class="hexin" id="colHex" maxlength="7" placeholder="#RRGGBB" value="${colState.hex}"></div>`
+   +`<div class="col-from"><input type="text" id="colPaint" list="paintlist" placeholder="…ou choisis une peinture existante"></div>`
+   +`<div class="col-src" id="colSrc"></div>`
+   +`<p class="home-h">Triade — ombre · médium · éclairci</p><div class="col-triad" id="colTriad"></div>`
+   +`<div class="col-chips"><span class="chip" data-b="all">Toutes</span><span class="chip" data-b="citadel">Citadel</span><span class="chip" data-b="ap">Army P.</span></div>`
+   +`<div class="col-res" id="colRes"></div>`;
+  document.querySelectorAll('#view-colors .col-chips .chip').forEach(c=>c.classList.toggle('on',c.dataset.b===colState.brand));
+  computeColors();
+}
+function computeColors(){
+  const hex=colState.hex;
+  document.getElementById('colSrc').innerHTML=`<span class="sw" style="background:${hex}"></span><div class="meta"><div class="hx">${hex}</div><div class="ds">${describeTint(hex)}</div></div>`;
+  const _tri=triadOf(hex);
+  document.getElementById('colTriad').innerHTML=[['Ombre',_tri.shadow],['Médium',_tri.mid],['Éclairci',_tri.highlight]].map(function(o){const bm=bestMatch(o[1]);const pct=bm?Math.round(100*Math.max(0,1-bm.de/100)):0;return '<div class="tri"><span class="sw" style="background:'+o[1]+'"></span><div class="tl">'+o[0]+'</div><div class="thx">'+o[1].toUpperCase()+'</div><div class="tm">'+(bm?esc(bm.name):'—')+'</div><div class="tp">'+pct+'%</div></div>';}).join('');
+  const rgb=cRgb(hex),lab=cLab(rgb[0],rgb[1],rgb[2]);
+  let list=PAINTLAB.filter(p=>colState.brand==='all'||(colState.brand==='ap'?p.ap:!p.ap));
+  list=list.map(p=>({p:p,de:cDE(lab,p.lab)})).sort((a,b)=>a.de-b.de).slice(0,16);
+  document.getElementById('colRes').innerHTML=list.map((o,i)=>{
+    const pct=Math.round(100*Math.max(0,1-o.de/100));
+    const brand=o.p.ap?'Army Painter':'Citadel';
+    return `<div class="cr${i===0?' best':''}"><span class="sw" style="background:${o.p.hex}"></span><div class="nm"><div class="t1">${esc(o.p.name)}</div><div class="t2">${esc(brand)} · ${esc(o.p.t)} · ${o.p.hex.toUpperCase()}</div></div><div class="pc"><div class="v">${pct}%</div><div class="h">proximité</div></div></div>`;
+  }).join('')||'<div class="empty">Aucune peinture pour ce filtre.</div>';
+  if(store.ok){try{localStorage.setItem('cc_color',hex);}catch(e){}}
+}
+(function(){
+  const ce=document.getElementById('view-colors');
+  function setHex(h){h=h.trim();if(/^#?[0-9a-fA-F]{6}$/.test(h)){if(h[0]!=='#')h='#'+h;colState.hex=h.toLowerCase();const cp=document.getElementById('colPick'),ch=document.getElementById('colHex');if(cp)cp.value=colState.hex;if(ch&&ch!==document.activeElement)ch.value=colState.hex;computeColors();}}
+  ce.addEventListener('input',e=>{
+    if(e.target.id==='colPick')return setHex(e.target.value);
+    if(e.target.id==='colHex')return setHex(e.target.value);
+    if(e.target.id==='colPaint'){if(P[e.target.value])setHex(P[e.target.value].h);return;}
+  });
+  ce.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c){colState.brand=c.dataset.b;document.querySelectorAll('#view-colors .col-chips .chip').forEach(x=>x.classList.toggle('on',x===c));computeColors();}});
+})();
 
 document.getElementById('stFac').textContent=DATA.length;
 document.getElementById('stSch').textContent=DATA.reduce((a,f)=>a+f.schemes.length,0);
@@ -918,3 +1471,4 @@ updateBadge();
 </script>
 </body>
 </html>
+
